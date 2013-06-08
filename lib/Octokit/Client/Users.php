@@ -17,7 +17,7 @@ class Users extends Api
      *
      * @return array List of matching users.
      */
-    public function search_users($search, array $options = array())
+    public function searchUsers($search, array $options = array())
     {
         $users = $this->request()->get('legacy/user/search/' . $search, $options);
         
@@ -33,7 +33,7 @@ class Users extends Api
      *
      * @return array List of GitHub users.
      */
-    public function all_users(array $options = array())
+    public function allUsers(array $options = array())
     {
         return $this->request()->get('users', $options);
     }
@@ -69,7 +69,7 @@ class Users extends Api
      *
      * @return array Array holding the access token.
      */
-    public function access_token($code, $app_id, $app_secret, array $options = array())
+    public function accessToken($code, $app_id, $app_secret, array $options = array())
     {
         $options = array_merge(array(
             'endpoint'      => $this->configuration()->web_endpoint,
@@ -88,7 +88,7 @@ class Users extends Api
      * 
      * @return bool True if credentials are valid.
      */
-    public function validate_credentials(array $options = array())
+    public function validateCredentials(array $options = array())
     {
         $this->configuration()->reset();
         
@@ -114,7 +114,7 @@ class Users extends Api
      *
      * @return array
      */
-    public function update_user(array $options = array())
+    public function updateUser(array $options = array())
     {
         return $this->request()->patch('user', $options);
     }
@@ -325,7 +325,7 @@ class Users extends Api
      *
      * @return array List of representing public keys.
      */
-    public function user_keys($user, array $options = array())
+    public function userKeys($user, array $options = array())
     {
         return $this->request()->get('users/' . $user . '/keys', $options);
     }
@@ -343,7 +343,7 @@ class Users extends Api
      * 
      * @return array Array representing the newly added public key.
      */
-    public function add_key($title, $key, array $options = array())
+    public function addKey($title, $key, array $options = array())
     {
         $options = array_merge(array(
             'title' => $title,
@@ -365,7 +365,7 @@ class Users extends Api
      *
      * @return array Array representing the updated public key.
      */
-    public function update_key($key_id, array $options = array())
+    public function updateKey($key_id, array $options = array())
     {
         return $this->request()->patch('user/keys/' . $key_id, $options);
     }
@@ -382,7 +382,7 @@ class Users extends Api
      *
      * @return bool True if removal was successful, false otherwise.
      */
-    public function remove_key($id, array $options = array())
+    public function removeKey($id, array $options = array())
     {
         return $this->request()->boolean_from_response('delete', 'user/keys/' . $id, $options);
     }
@@ -413,7 +413,7 @@ class Users extends Api
      * 
      * @return array List of all email addresses of the user.
      */
-    public function add_email($email, array $options = array())
+    public function addEmail($email, array $options = array())
     {
         $options = array_merge(array(
             'email' => $email,
@@ -434,7 +434,7 @@ class Users extends Api
      *
      * @return bool True if removal was successful, false otherwise.
      */
-    public function remove_email($email, array $options = array())
+    public function removeEmail($email, array $options = array())
     {
         $options = array_merge(array(
             'email' => $email,

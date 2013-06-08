@@ -26,25 +26,25 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testSearchUsers()
     {
-        $this->request()->set_fixture('legacy/users');
+        $this->request()->setFixture('legacy/users');
         
-        $users = $this->users()->search_users('sferik');
+        $users = $this->users()->searchUsers('sferik');
         
         $this->assertEquals($users[0]['login'], 'sferik');
     }
     
     public function testAllUsers()
     {
-        $this->request()->set_fixture('all_users');
+        $this->request()->setFixture('all_users');
         
-        $users = $this->users()->all_users();
+        $users = $this->users()->allUsers();
         
         $this->assertEquals($users[0]['login'], 'mojombo');
     }
     
     public function testUserWithUsername()
     {
-        $this->request()->set_fixture('user');
+        $this->request()->setFixture('user');
         
         $user = $this->users()->user('sferik');
         
@@ -53,7 +53,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testUserWithoutUsername()
     {
-        $this->request()->set_fixture('user');
+        $this->request()->setFixture('user');
         
         $user = $this->users()->user();
         
@@ -62,18 +62,18 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testAccessToken()
     {
-        $this->request()->set_fixture('user_token');
+        $this->request()->setFixture('user_token');
         
-        $access_token = $this->users()->access_token('code', 'id_here', 'secret_here');
+        $access_token = $this->users()->accessToken('code', 'id_here', 'secret_here');
         
         $this->assertEquals($access_token['access_token'], 'this_be_ye_token/use_it_wisely');
     }
     
     public function testValidateCredentials()
     {
-        $this->request()->set_fixture('user');
+        $this->request()->setFixture('user');
         
-        $valid = $this->users()->validate_credentials(array(
+        $valid = $this->users()->validateCredentials(array(
             'login'    => 'sferik',
             'password' => 'foobar',
         ));
@@ -83,9 +83,9 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testUpdateUser()
     {
-        $this->request()->set_fixture('user');
+        $this->request()->setFixture('user');
         
-        $user = $this->users()->update_user(array(
+        $user = $this->users()->updateUser(array(
             'body' => array(
                 'name'     => 'Erik Michaels-Ober',
                 'email'    => 'sferik@gmail.com',
@@ -100,7 +100,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testFollowersWithUsername()
     {
-        $this->request()->set_fixture('followers');
+        $this->request()->setFixture('followers');
         
         $followers = $this->users()->followers('sferik');
         
@@ -109,7 +109,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testFollowersWithoutUsername()
     {
-        $this->request()->set_fixture('followers');
+        $this->request()->setFixture('followers');
         
         $followers = $this->users()->followers();
         
@@ -118,7 +118,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testFollowingWithUsername()
     {
-        $this->request()->set_fixture('following');
+        $this->request()->setFixture('following');
         
         $following = $this->users()->following('sferik');
         
@@ -127,7 +127,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testFollowingWithoutUsername()
     {
-        $this->request()->set_fixture('following');
+        $this->request()->setFixture('following');
         
         $following = $this->users()->following();
         
@@ -136,7 +136,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testFollowsWithMutualFollow()
     {
-        $this->request()->set_fixture(array(
+        $this->request()->setFixture(array(
             'status' => 204,
             'body'   => '',
         ));
@@ -148,7 +148,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testFollowsWithNotMutualFollow()
     {
-        $this->request()->set_fixture(array(
+        $this->request()->setFixture(array(
             'status' => 404,
             'body'   => '',
         ));
@@ -164,7 +164,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testFollow()
     {
-        $this->request()->set_fixture(array(
+        $this->request()->setFixture(array(
             'status' => 204,
             'body'   => '',
         ));
@@ -176,7 +176,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testUnfollow()
     {
-        $this->request()->set_fixture(array(
+        $this->request()->setFixture(array(
             'status' => 204,
             'body'   => '',
         ));
@@ -188,7 +188,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testStarredWithUserStarringRepo()
     {
-        $this->request()->set_fixture(array(
+        $this->request()->setFixture(array(
             'status' => 204,
             'body'   => '',
         ));
@@ -200,7 +200,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testStarredWithUserNotStarringRepo()
     {
-        $this->request()->set_fixture(array(
+        $this->request()->setFixture(array(
             'status' => 404,
             'body'   => '',
         ));
@@ -216,7 +216,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testStarredWithUsername()
     {
-        $this->request()->set_fixture('starred');
+        $this->request()->setFixture('starred');
         
         $starred = $this->users()->starred('sferik');
         
@@ -225,7 +225,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testStarredWithoutUsername()
     {
-        $this->request()->set_fixture('starred');
+        $this->request()->setFixture('starred');
         
         $starred = $this->users()->starred();
         
@@ -234,7 +234,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testWatchedWithUsername()
     {
-        $this->request()->set_fixture('watched');
+        $this->request()->setFixture('watched');
         
         $watched = $this->users()->watched('sferik');
         
@@ -243,7 +243,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testWatchedWithoutUsername()
     {
-        $this->request()->set_fixture('watched');
+        $this->request()->setFixture('watched');
         
         $watched = $this->users()->watched();
         
@@ -252,7 +252,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testKey()
     {
-        $this->request()->set_fixture('public_key');
+        $this->request()->setFixture('public_key');
         
         $public_key = $this->users()->key(103205);
         
@@ -262,7 +262,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testKeys()
     {
-        $this->request()->set_fixture('public_keys');
+        $this->request()->setFixture('public_keys');
         
         $public_keys = $this->users()->keys();
         
@@ -271,28 +271,28 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testUserKeys()
     {
-        $this->request()->set_fixture('public_keys');
+        $this->request()->setFixture('public_keys');
         
-        $public_keys = $this->users()->user_keys('pengwynn');
+        $public_keys = $this->users()->userKeys('pengwynn');
         
         $this->assertEquals($public_keys[0]['id'], 103205);
     }
     
     public function testAddKey()
     {
-        $this->request()->set_fixture('public_key');
+        $this->request()->setFixture('public_key');
         
         $title = 'Moss';
         $key = 'ssh-dss AAAAB3NzaC1kc3MAAACBAJz7HanBa18ad1YsdFzHO5Wy1/WgXd4BV+czbKq7q23jungbfjN3eo2a0SVdxux8GG+RZ9ia90VD/X+PE4s3LV60oXZ7PDAuyPO1CTF0TaDoKf9mPaHcPa6agMJVocMsgBgwviWT1Q9VgN1SccDsYVDtxkIAwuw25YeHZlG6myx1AAAAFQCgW+OvXWUdUJPBGkRJ8ML7uf0VHQAAAIAlP5G96tTss0SKYVSCJCyocn9cyGQdNjxah4/aYuYFTbLI1rxk7sr/AkZfJNIoF2UFyO5STbbratykIQGUPdUBg1a2t72bu31x+4ZYJMngNsG/AkZ2oqLiH6dJKHD7PFx2oSPalogwsUV7iSMIZIYaPa03A9763iFsN0qJjaed+gAAAIBxz3Prxdzt/os4XGXSMNoWcS03AFC/05NOkoDMrXxQnTTpp1wrOgyRqEnKz15qC5dWk1ynzK+LJXHDZGA8lXPfCjHpJO3zrlZ/ivvLhgPdDpt13MAhIJFH06hTal0woxbk/fIdY71P3kbgXC0Ppx/0S7BC+VxqRCA4/wcM+BoDbA== host';
         
-        $public_key = $this->users()->add_key($title, $key);
+        $public_key = $this->users()->addKey($title, $key);
         
         $this->assertEquals($public_key['id'], 103205);
     }
     
     public function testUpdateKey()
     {
-        $this->request()->set_fixture('public_key_update');
+        $this->request()->setFixture('public_key_update');
         
         $title = 'updated title';
         $key = 'ssh-rsa BBBB...';
@@ -302,7 +302,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
             'key'   => $key,
         );
         
-        $public_key = $this->users()->update_key(1, $updated_key);
+        $public_key = $this->users()->updateKey(1, $updated_key);
         
         $this->assertEquals($public_key['title'], $title);
         $this->assertEquals($public_key['key'], $key);
@@ -310,19 +310,19 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testRemoveKey()
     {
-        $this->request()->set_fixture(array(
+        $this->request()->setFixture(array(
             'status' => 204,
             'body'   => '',
         ));
         
-        $public_key = $this->users()->remove_key(103205);
+        $public_key = $this->users()->removeKey(103205);
         
         $this->assertTrue($public_key);
     }
     
     public function testEmails()
     {
-        $this->request()->set_fixture('emails');
+        $this->request()->setFixture('emails');
         
         $emails = $this->users()->emails();
         
@@ -331,28 +331,28 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function testAddEmail()
     {
-        $this->request()->set_fixture('emails');
+        $this->request()->setFixture('emails');
         
-        $emails = $this->users()->add_email('sferik@gmail.com');
+        $emails = $this->users()->addEmail('sferik@gmail.com');
         
         $this->assertEquals($emails[0], 'sferik@gmail.com');
     }
     
     public function testRemoveEmail()
     {
-        $this->request()->set_fixture(array(
+        $this->request()->setFixture(array(
             'status' => 204,
             'body'   => '',
         ));
         
-        $email = $this->users()->remove_email('sferik@gmail.com');
+        $email = $this->users()->removeEmail('sferik@gmail.com');
         
         $this->assertTrue($email);
     }
     
     public function testSubscriptions()
     {
-        $this->request()->set_fixture('subscriptions');
+        $this->request()->setFixture('subscriptions');
         
         $subscriptions = $this->users()->subscriptions('pengwynn');
         

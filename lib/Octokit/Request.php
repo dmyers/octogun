@@ -46,7 +46,7 @@ class Request extends Api
         return $body;
     }
     
-    public function boolean_from_response($method, $path, array $options = array())
+    public function booleanFromResponse($method, $path, array $options = array())
     {
         $response = $this->request($method, $path, $options);
         
@@ -123,12 +123,12 @@ class Request extends Api
         
         $this->fixture = false;
         
-        $this->handle_errors($response);
+        $this->handleErrors($response);
         
         return $response;
     }
     
-    public function handle_errors($response)
+    public function handleErrors($response)
     {
         switch ($response->getStatusCode()) {
             case 400:
@@ -164,7 +164,7 @@ class Request extends Api
         }
     }
     
-    public function set_fixture($fixture)
+    public function setFixture($fixture)
     {
         if (is_array($fixture)) {
             $this->fixture = $fixture;
