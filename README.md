@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/dmyers/octokit.png?branch=master)](http://travis-ci.org/dmyers/octokit)
+
 # Octokit
 
 Simple PHP wrapper for the GitHub API.
