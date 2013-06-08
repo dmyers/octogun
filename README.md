@@ -35,7 +35,7 @@ Alternately, you can authenticate with a [GitHub OAuth2 token][oauth].
 
 ```php
 $client = new \Octokit\Client(array('login' => 'me', 'oauth_token' => 'oauth2token'));
-$client->()->follow('sferik');
+$client->users()->follow('sferik');
 ```
 
 ### Using with GitHub Enterprise
