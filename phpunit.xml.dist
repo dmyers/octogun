@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit backupGlobals="false" bootstrap="vendor/autoload.php" colors="true">
+    <testsuites>
+        <testsuite name="Octokit Test Suite">
+            <directory suffix="Test.php">./test/Octokit/</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">./lib/Octokit/</directory>
+        </whitelist>
+    </filter>
+</phpunit>
