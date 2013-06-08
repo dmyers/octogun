@@ -1,0 +1,188 @@
+<?php
+
+namespace Octokit;
+
+class Request extends Api
+{
+    public $fixture = false;
+    
+    public function delete($path, array $options = array())
+    {
+        $response = $this->request('delete', $path, $options);
+        $body = json_decode($response->getContent(), true);
+        
+        return $body;
+    }
+    
+    public function get($path, array $options = array())
+    {
+        $response = $this->request('get', $path, $options);
+        $body = json_decode($response->getContent(), true);
+        
+        return $body;
+    }
+    
+    public function patch($path, array $options = array())
+    {
+        $response = $this->request('patch', $path, $options);
+        $body = json_decode($response->getContent(), true);
+        
+        return $body;
+    }
+    
+    public function post($path, array $options = array())
+    {
+        $response = $this->request('post', $path, $options);
+        $body = json_decode($response->getContent(), true);
+        
+        return $body;
+    }
+    
+    public function put($path, array $options = array())
+    {
+        $response = $this->request('put', $path, $options);
+        $body = json_decode($response->getContent(), true);
+        
+        return $body;
+    }
+    
+    public function boolean_from_response($method, $path, array $options = array())
+    {
+        $response = $this->request($method, $path, $options);
+        
+        return $response->getStatusCode() == 204;
+    }
+    
+    public function request($method, $path, array $options = array())
+    {
+        $path = ltrim($path, '/'); // leading slash in path fails in github:enterprise
+        
+        $token = null;
+        
+        if (!empty($options['token'])) {
+            $token = $options['token'];
+        }
+        else if (!empty($options['oauth_token'])) {
+            $token = $options['oauth_token'];
+        }
+        else {
+            $token = $this->configuration()->oauth_token;
+        }
+        
+        $force_urlencoded = false;
+        
+        if (!empty($options['force_urlencoded']) && $options['force_urlencoded']) {
+            $force_urlencoded = true;
+        }
+        
+        $url = null;
+        
+        if (!empty($options['endpoint'])) {
+            $url = $options['endpoint'];
+        } else {
+            $url = $this->configuration()->api_endpoint;
+        }
+        
+        $connection = $this->connection()->create($options);
+        $listener = $connection['listener'];
+        $connection = $connection['connection'];
+        
+        if (!empty($options['accept'])) {
+            $connection->addHeader('Accept:' . $options['accept']);
+        } else {
+            $connection->addHeader('Accept: application/vnd.github.beta+json');
+        }
+        
+        if ($token) {
+            $connection->addHeader('token:' . $token);
+        }
+        
+        $browser = new \Buzz\Browser();
+        
+        if ($this->fixture) {
+            $request_client = new Request\FixtureRequest($this->fixture);
+            
+            $browser->setClient($request_client);
+        }
+        
+        if (!empty($listener)) {
+            $browser->addListener($listener);
+        }
+        
+        $connection->fromUrl($url);
+        $connection->setResource('/' . $path);
+        $connection->setMethod($method);
+        
+        $request_host = $this->configuration()->request_host;
+        
+        if (!empty($request_host)) {
+            $connection->setHost($request_host);
+        }
+        
+        $response = $browser->send($connection);
+        
+        $this->fixture = false;
+        
+        $this->handle_errors($response);
+        
+        return $response;
+    }
+    
+    public function handle_errors($response)
+    {
+        switch ($response->getStatusCode()) {
+            case 400:
+                throw new Exception\BadRequestException();
+                break;
+            case 401:
+                throw new Exception\UnauthorizedException();
+                break;
+            case 403:
+                throw new Exception\ForbiddenException();
+                break;
+            case 404:
+                throw new Exception\NotFoundException();
+                break;
+            case 406:
+                throw new Exception\NotAcceptableException();
+                break;
+            case 422:
+                throw new Exception\UnprocessableEntityException();
+                break;
+            case 500:
+                throw new Exception\InternalServerErrorException();
+                break;
+            case 501:
+                throw new Exception\NotImplementedException();
+                break;
+            case 502:
+                throw new Exception\BadGatewayException();
+                break;
+            case 503:
+                throw new Exception\ServiceUnavailableException();
+                break;
+        }
+    }
+    
+    public function set_fixture($fixture)
+    {
+        if (is_array($fixture)) {
+            $this->fixture = $fixture;
+            return;
+        }
+        
+        $fixture_path = __DIR__ . '/../../test/Fixtures/' . $fixture . '.json';
+        
+        if (file_exists($fixture_path)) {
+            $fixture_body = file_get_contents($fixture_path);
+            
+            $this->fixture = array(
+                'status' => 200,
+                'body'   => $fixture_body,
+            );
+        }
+        else {
+            throw new \Exception('Unable to find fixture: ' . $fixture);
+        }
+    }
+}
