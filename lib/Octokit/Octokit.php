@@ -22,7 +22,7 @@ class Octokit
             return $class;
         }
         else {
-            throw new BadMethodCallException('Invalid method call. Method '.$method.' does not exist.');
+            throw new \BadMethodCallException('Invalid method call. Method '.$method.' does not exist.');
         }
     }
 }

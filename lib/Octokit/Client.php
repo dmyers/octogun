@@ -30,7 +30,7 @@ class Client
             return $class;
         }
         else {
-            throw new BadMethodCallException('Call to undefined method '.get_class($this).'::'.$method.'()');
+            throw new \BadMethodCallException('Call to undefined method '.get_class($this).'::'.$method.'()');
         }
     }
 }
