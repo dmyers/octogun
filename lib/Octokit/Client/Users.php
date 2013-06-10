@@ -181,7 +181,7 @@ class Users extends Api
             $user = $args[1];
         }
         
-        return $this->request()->boolean_from_response('get', 'user/following/' . $target);
+        return $this->request()->booleanFromResponse('get', 'user/following/' . $target);
     }
     
     /**
@@ -198,7 +198,7 @@ class Users extends Api
      */
     public function follow($user, array $options = array())
     {
-        return $this->request()->boolean_from_response('put', 'user/following/' . $user, $options);
+        return $this->request()->booleanFromResponse('put', 'user/following/' . $user, $options);
     }
     
     /**
@@ -215,7 +215,7 @@ class Users extends Api
      */
     public function unfollow($user, array $options = array())
     {
-        return $this->request()->boolean_from_response('delete', 'user/following/' . $user, $options);
+        return $this->request()->booleanFromResponse('delete', 'user/following/' . $user, $options);
     }
     
     /**
@@ -252,7 +252,7 @@ class Users extends Api
      */
     public function stars($user, $repo, array $options = array())
     {
-        return $this->request()->boolean_from_response('get', 'user/starred/' . $user . '/' . $repo, $options);
+        return $this->request()->booleanFromResponse('get', 'user/starred/' . $user . '/' . $repo, $options);
     }
     
     /**
@@ -384,7 +384,7 @@ class Users extends Api
      */
     public function removeKey($id, array $options = array())
     {
-        return $this->request()->boolean_from_response('delete', 'user/keys/' . $id, $options);
+        return $this->request()->booleanFromResponse('delete', 'user/keys/' . $id, $options);
     }
     
     /**
@@ -440,7 +440,7 @@ class Users extends Api
             'email' => $email,
         ), $options);
         
-        return $this->request()->boolean_from_response('delete', 'user/emails', $options);
+        return $this->request()->booleanFromResponse('delete', 'user/emails', $options);
     }
     
     /**
