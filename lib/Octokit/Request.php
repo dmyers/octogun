@@ -177,8 +177,7 @@ class Request extends Api
             $fixture_body = file_get_contents($fixture_path);
             
             $this->fixture = array(
-                'status' => 200,
-                'body'   => $fixture_body,
+                'body' => $fixture_body,
             );
         }
         else {

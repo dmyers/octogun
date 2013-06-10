@@ -25,6 +25,10 @@ class FixtureRequest extends AbstractClient
      */
     public function send(RequestInterface $request, MessageInterface $response)
     {
+        if (!isset($this->fixture['status'])) {
+            $this->fixture['status'] = 200;
+        }
+        
         $header = 'HTTP ' . $this->fixture['status'] . ' null';
         
         $response->addHeader($header);
