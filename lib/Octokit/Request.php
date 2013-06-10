@@ -8,7 +8,7 @@ class Request extends Api
     
     public function delete($path, array $options = array())
     {
-        $response = $this->request('delete', $path, $options);
+        $response = $this->sendRequest('delete', $path, $options);
         $body = json_decode($response->getContent(), true);
         
         return $body;
@@ -16,7 +16,7 @@ class Request extends Api
     
     public function get($path, array $options = array())
     {
-        $response = $this->request('get', $path, $options);
+        $response = $this->sendRequest('get', $path, $options);
         $body = json_decode($response->getContent(), true);
         
         return $body;
@@ -24,7 +24,7 @@ class Request extends Api
     
     public function patch($path, array $options = array())
     {
-        $response = $this->request('patch', $path, $options);
+        $response = $this->sendRequest('patch', $path, $options);
         $body = json_decode($response->getContent(), true);
         
         return $body;
@@ -32,7 +32,7 @@ class Request extends Api
     
     public function post($path, array $options = array())
     {
-        $response = $this->request('post', $path, $options);
+        $response = $this->sendRequest('post', $path, $options);
         $body = json_decode($response->getContent(), true);
         
         return $body;
@@ -40,7 +40,7 @@ class Request extends Api
     
     public function put($path, array $options = array())
     {
-        $response = $this->request('put', $path, $options);
+        $response = $this->sendRequest('put', $path, $options);
         $body = json_decode($response->getContent(), true);
         
         return $body;
@@ -48,12 +48,12 @@ class Request extends Api
     
     public function booleanFromResponse($method, $path, array $options = array())
     {
-        $response = $this->request($method, $path, $options);
+        $response = $this->sendRequest($method, $path, $options);
         
         return $response->getStatusCode() == 204;
     }
     
-    public function request($method, $path, array $options = array())
+    public function sendRequest($method, $path, array $options = array())
     {
         $path = ltrim($path, '/'); // leading slash in path fails in github:enterprise
         
