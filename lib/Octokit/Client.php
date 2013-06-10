@@ -5,6 +5,7 @@ namespace Octokit;
 class Client
 {
     public $authentication;
+    public $connection;
     public $configuration;
     public $request;
     

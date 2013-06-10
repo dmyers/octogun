@@ -14,6 +14,11 @@ class UsersTest extends \PHPUnit_Framework_TestCase
         $this->client = new Client();
     }
     
+    public function tearDown()
+    {
+        $this->client->configuration->reset();
+    }
+    
     public function request()
     {
         return $this->client->request;
