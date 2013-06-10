@@ -50,7 +50,7 @@ class Configuration extends Api
     public function set(array $options = array())
     {
         foreach ($options as $key => $value) {
-            $this->configuration->$key = $value;
+            $this->$key = $value;
         }
     }
 }
