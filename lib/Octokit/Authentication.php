@@ -28,12 +28,12 @@ class Authentication extends Api
         return !empty($this->configuration()->oauth_token);
     }
     
-    public function unauthed_rate_limited()
+    public function unauthedRateLimited()
     {
         return !empty($this->configuration()->client_id) && !empty($this->configuration()->client_secret);
     }
     
-    public function unauthed_rate_limit_params()
+    public function unauthedRateLimitParams()
     {
         return array(
             'client_id'     => $this->configuration()->client_id,

@@ -20,10 +20,10 @@ class Connection extends Api
         
         if (!$this->authentication()->oauthed()
             && !$this->authentication()->authenticated()
-            && $this->authentication()->unauthed_rate_limited()
+            && $this->authentication()->unauthedRateLimited()
         ) {
             $options = array_merge(array(
-                'params' => $this->authentication()->unauthed_rate_limit_params(),
+                'params' => $this->authentication()->unauthedRateLimitParams(),
             ), $options);
         }
         
