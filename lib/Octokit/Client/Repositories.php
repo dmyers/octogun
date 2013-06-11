@@ -220,7 +220,7 @@ class Repositories extends Api
      */
     public function createRepository($name, array $options = array())
     {
-        $organization = isset($options['organization']) : $options['organization'] : null;
+        $organization = isset($options['organization']) ? $options['organization'] : null;
         
         $options = array_merge(array(
             'name' => $name,
