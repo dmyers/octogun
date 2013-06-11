@@ -32,7 +32,7 @@ class Repositories extends Api
     
     public function __call($method, $args)
     {
-        if (in_array($method)) {
+        if (in_array($method, $this->aliases)) {
             $alias = $this->aliases[$method];
             
             return call_user_func_array(array($this, $alias), $args);
