@@ -30,18 +30,6 @@ class Repositories extends Api
         'repoAssignees'    => 'repositoryAssignees',
     );
     
-    public function __call($method, $args)
-    {
-        if (in_array($method, $this->aliases)) {
-            $alias = $this->aliases[$method];
-            
-            return call_user_func_array(array($this, $alias), $args);
-        }
-        else {
-            throw new \BadMethodCallException('Call to undefined method '.get_class($this).'::'.$method.'()');
-        }
-    }
-    
     /**
      * Legacy repository search.
      * 
