@@ -25,6 +25,7 @@ $client->user('sferik');
 ```php
 $client = \Octokit\Octokit::repositories();
 $client->repo('octokit/octokit.rb');
+```
 
 #### Authenticated Requests
 For methods that require authentication, you'll need to setup a client with
