@@ -9,7 +9,7 @@ class Request extends Api
     public function delete($path, array $options = array())
     {
         $response = $this->sendRequest('delete', $path, $options);
-        $body = json_decode($response->getContent(), true);
+        $body = $this->parseResponse($response);
         
         return $body;
     }
@@ -17,7 +17,7 @@ class Request extends Api
     public function get($path, array $options = array())
     {
         $response = $this->sendRequest('get', $path, $options);
-        $body = json_decode($response->getContent(), true);
+        $body = $this->parseResponse($response);
         
         return $body;
     }
@@ -25,7 +25,7 @@ class Request extends Api
     public function patch($path, array $options = array())
     {
         $response = $this->sendRequest('patch', $path, $options);
-        $body = json_decode($response->getContent(), true);
+        $body = $this->parseResponse($response);
         
         return $body;
     }
@@ -33,7 +33,7 @@ class Request extends Api
     public function post($path, array $options = array())
     {
         $response = $this->sendRequest('post', $path, $options);
-        $body = json_decode($response->getContent(), true);
+        $body = $this->parseResponse($response);
         
         return $body;
     }
@@ -41,7 +41,7 @@ class Request extends Api
     public function put($path, array $options = array())
     {
         $response = $this->sendRequest('put', $path, $options);
-        $body = json_decode($response->getContent(), true);
+        $body = $this->parseResponse($response);
         
         return $body;
     }
@@ -128,6 +128,19 @@ class Request extends Api
         return $response;
     }
     
+    public function parseResponse($response)
+    {
+        $body = $response->getContent();
+        
+        $content_type = $response->getHeader('Content-Type');
+        
+        if (!empty($content_type) && $content_type == 'application/json') {
+            $body = json_decode($body, true);
+        }
+        
+        return $body;
+    }
+    
     public function handleErrors($response)
     {
         switch ($response->getStatusCode()) {
@@ -177,7 +190,8 @@ class Request extends Api
             $fixture_body = file_get_contents($fixture_path);
             
             $this->fixture = array(
-                'body' => $fixture_body,
+                'headers' => array('Content-Type' => 'application/json'),
+                'body'    => $fixture_body,
             );
         }
         else {

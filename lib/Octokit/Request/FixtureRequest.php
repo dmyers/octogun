@@ -32,6 +32,11 @@ class FixtureRequest extends AbstractClient
         $header = 'HTTP ' . $this->fixture['status'] . ' null';
         
         $response->addHeader($header);
+        
+        if (!empty($this->fixture['headers'])) {
+            $response->addHeaders($this->fixture['headers']);
+        }
+        
         $response->setContent($this->fixture['body']);
     }
 }
