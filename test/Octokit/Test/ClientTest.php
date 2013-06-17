@@ -26,6 +26,34 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         return $this->client->request;
     }
     
+    public function testDefaultUserAgent()
+    {
+        $this->request()->setFixture(array(
+            'headers' => array(
+                'X-RateLimit-Limit'     => 5000,
+                'X-RateLimit-Remaining' => 5000,
+            ),
+        ));
+        
+        $client = $this->client->ratelimit();
+        $rate_limit = $client->rateLimit();
+    }
+    
+    public function testCustomUserAgent()
+    {
+        $this->configuration()->user_agent = 'My mashup';
+        
+        $this->request()->setFixture(array(
+            'headers' => array(
+                'X-RateLimit-Limit'     => 5000,
+                'X-RateLimit-Remaining' => 5000,
+            ),
+        ));
+        
+        $client = $this->client->ratelimit();
+        $rate_limit = $client->rateLimit();
+    }
+    
     public function testApiEndpointDefault()
     {
         $this->assertEquals($this->configuration()->api_endpoint, 'https://api.github.com/');
