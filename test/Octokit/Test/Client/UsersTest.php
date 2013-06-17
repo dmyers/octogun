@@ -90,13 +90,11 @@ class UsersTest extends \PHPUnit_Framework_TestCase
         $this->request()->setFixture('user');
         
         $user = $this->users()->updateUser(array(
-            'body' => array(
-                'name'     => 'Erik Michaels-Ober',
-                'email'    => 'sferik@gmail.com',
-                'company'  => 'Code for America',
-                'location' => 'San Francisco',
-                'hireable' => false,
-            ),
+            'name'     => 'Erik Michaels-Ober',
+            'email'    => 'sferik@gmail.com',
+            'company'  => 'Code for America',
+            'location' => 'San Francisco',
+            'hireable' => false,
         ));
         
         $this->assertEquals($user['login'], 'sferik');
