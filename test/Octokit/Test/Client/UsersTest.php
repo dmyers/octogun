@@ -3,7 +3,6 @@
 namespace Octokit\Test\Client;
 
 use Octokit\Client;
-use Octokit\Client\Users;
 
 class UsersTest extends \PHPUnit_Framework_TestCase
 {
@@ -11,7 +10,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
     
     public function setUp()
     {
-        $this->client = new Client();
+        $this->client = new Client(array('login' => 'sferik'));
     }
     
     public function tearDown()
