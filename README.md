@@ -1,6 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/dmyers/octokit.png?branch=master)](http://travis-ci.org/dmyers/octokit)
-
-# Octokit
+# Octokit [![Build Status](https://secure.travis-ci.org/dmyers/octokit.png?branch=master)](http://travis-ci.org/dmyers/octokit)
 
 Simple PHP wrapper for the GitHub API. This is an unofficial port of [Octokit.rb](https://github.com/octokit/octokit.rb) in PHP. The goal is to have feature parity between languages.
 
