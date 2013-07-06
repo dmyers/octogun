@@ -2,7 +2,7 @@
 
 # Octokit
 
-Simple PHP wrapper for the GitHub API.
+Simple PHP wrapper for the GitHub API. This is an unofficial port of [Octokit.rb](https://github.com/octokit/octokit.rb) in PHP. The goal is to have feature parity between languages.
 
 ## Installation
 
