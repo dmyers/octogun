@@ -4,10 +4,9 @@ Simple PHP wrapper for the GitHub API. This is an unofficial port of [Octokit.rb
 
 ## Installation
 
-Simpley add the following to your composer.json require block:
+Simply add the following to your composer.json require block:
 
 	'dmyers/octokit'
-
 
 ### Examples
 
@@ -26,6 +25,7 @@ $client->repo('octokit/octokit.rb');
 ```
 
 #### Authenticated Requests
+
 For methods that require authentication, you'll need to setup a client with
 your login and password.
 
@@ -53,3 +53,7 @@ $client = new \Octokit\Client(array('login' => 'USERNAME', 'password' => 'PASSWO
 $client->configuration->api_endpoint = 'https://github.company.com/api/v3';
 $client->configuration->web_endpoint = 'https://github.company.com/';
 ```
+## Copyright
+
+Copyright (c) 2013 Derek Myers. See [LICENSE][] for details.
+[license]: LICENSE.md
