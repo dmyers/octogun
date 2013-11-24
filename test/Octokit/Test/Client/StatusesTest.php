@@ -74,6 +74,6 @@ class StatusesTest extends \PHPUnit_Framework_TestCase
         
         $status_messages = $this->statuses()->githubStatusMessages();
         
-        $this->assertEquals($status_messages['body'], "I'm seeing, like, unicorns man.");
+        $this->assertEquals($status_messages[0]['body'], "I'm seeing, like, unicorns man.");
     }
 }
