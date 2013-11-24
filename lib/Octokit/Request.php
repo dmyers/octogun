@@ -101,9 +101,12 @@ class Request extends Api
         
         if ($this->fixture) {
             $request_client = new Request\FixtureRequest($this->fixture);
-            
-            $browser->setClient($request_client);
         }
+        else {
+            $request_client = new \Buzz\Client\Curl();
+        }
+        
+        $browser->setClient($request_client);
         
         if (!empty($listener)) {
             $browser->addListener($listener);
