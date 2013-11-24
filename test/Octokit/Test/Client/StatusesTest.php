@@ -45,7 +45,7 @@ class StatusesTest extends \PHPUnit_Framework_TestCase
             'target_url' => 'http://wynnnetherland.com',
         );
         
-        $status = $this->statuses()->statuses('pengwynn/octokit', '7d069dedd4cb56bf57760688657abd0e6b5a28b8', 'success', $info);
+        $status = $this->statuses()->createStatus('pengwynn/octokit', '7d069dedd4cb56bf57760688657abd0e6b5a28b8', 'success', $info);
         
         $this->assertEquals($status['target_url'], 'http://wynnnetherland.com');
     }
