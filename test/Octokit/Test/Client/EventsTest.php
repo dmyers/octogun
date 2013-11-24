@@ -97,7 +97,7 @@ class EventsTest extends \PHPUnit_Framework_TestCase
         
         $org_events = $this->events()->organizationEvents('lostisland');
         
-        $this->assertEquals($org_events[0]['id'], 1651989733);
+        $this->assertEquals($org_events[0]['id'], 1652750175);
     }
     
     public function testOrganizationPublicEvents()
