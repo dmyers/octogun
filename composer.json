@@ -2,6 +2,7 @@
   "name": "dmyers/octokit",
   "description": "Simple wrapper for the GitHub v3 API",
   "keywords": ["github api", "github"],
+  "license": "MIT",
   "homepage": "http://github.com/dmyers/octokit",
   "authors": [
     {
