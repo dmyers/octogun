@@ -35,7 +35,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             ),
         ));
         
-        $client = $this->client->ratelimit();
+        $client = $this->client->rateLimit();
         $rate_limit = $client->rateLimit();
     }
     
@@ -50,7 +50,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
             ),
         ));
         
-        $client = $this->client->ratelimit();
+        $client = $this->client->rateLimit();
         $rate_limit = $client->rateLimit();
     }
     
