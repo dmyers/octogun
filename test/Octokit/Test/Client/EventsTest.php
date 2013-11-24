@@ -104,7 +104,7 @@ class EventsTest extends \PHPUnit_Framework_TestCase
     {
         $this->request()->setFixture('organization_public_events');
         
-        $org_public_events = $this->events()->organizationEvents('github');
+        $org_public_events = $this->events()->organizationPublicEvents('github');
         
         $this->assertEquals($org_public_events[0]['id'], 1652750175);
     }
