@@ -92,7 +92,7 @@ class Repositories extends Api
      */
     public function repositories($username = null, array $options = array())
     {
-        if (!empty($username)) {
+        if (empty($username)) {
             return $this->request()->get('user/repos', $options);
         }
         else {
