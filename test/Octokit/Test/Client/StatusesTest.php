@@ -72,7 +72,7 @@ class StatusesTest extends \PHPUnit_Framework_TestCase
     {
         $this->request()->setFixture('github_status_messages');
         
-        $status_messages = $this->statuses()->githubStatusLastMessage();
+        $status_messages = $this->statuses()->githubStatusMessages();
         
         $this->assertEquals($status_messages['body'], "I'm seeing, like, unicorns man.");
     }
