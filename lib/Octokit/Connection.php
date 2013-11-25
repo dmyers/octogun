@@ -39,7 +39,7 @@ class Connection extends Api
             $connection->addHeader('Content-Type: application/x-www-form-urlencoded');
         }
         else {
-            $connection->addHeader('Content-Type: application/json');
+            //$connection->addHeader('Content-Type: application/json');
         }
         
         $connection->addHeader('User-Agent:' . $this->configuration()->user_agent);
