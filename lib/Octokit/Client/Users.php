@@ -69,8 +69,16 @@ class Users extends Api
      *
      * @return array Array holding the access token.
      */
-    public function accessToken($code, $app_id, $app_secret, array $options = array())
+    public function accessToken($code, $app_id = null, $app_secret = null, array $options = array())
     {
+        if (empty($app_id)) {
+            $app_id = $this->configuration()->client_id;
+        }
+        
+        if (empty($app_secret)) {
+            $app_secret = $this->configuration()->client_secret;
+        }
+        
         $options = array_merge(array(
             'endpoint'      => $this->configuration()->web_endpoint,
             'code'          => $code,
