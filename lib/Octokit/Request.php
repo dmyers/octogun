@@ -88,13 +88,13 @@ class Request extends Api
         $connection = $connection['connection'];
         
         if (!empty($options['accept'])) {
-            $connection->addHeader('Accept:' . $options['accept']);
+            $connection->addHeader('Accept: ' . $options['accept']);
         } else {
             $connection->addHeader('Accept: application/vnd.github.beta+json');
         }
         
         if ($token) {
-            $connection->addHeader('token:' . $token);
+            $connection->addHeader('Authorization: token ' . $token);
         }
         
         $browser = new \Buzz\Browser();

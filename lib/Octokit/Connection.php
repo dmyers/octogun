@@ -42,7 +42,7 @@ class Connection extends Api
             //$connection->addHeader('Content-Type: application/json');
         }
         
-        $connection->addHeader('User-Agent:' . $this->configuration()->user_agent);
+        $connection->addHeader('User-Agent: ' . $this->configuration()->user_agent);
         
         return array(
             'connection' => $connection,
