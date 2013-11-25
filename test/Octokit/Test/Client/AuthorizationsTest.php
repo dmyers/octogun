@@ -92,4 +92,13 @@ class AuthorizationsTest extends \PHPUnit_Framework_TestCase
         
         $this->assertTrue($delete);
     }
+    
+    public function testAuthorizeUrl()
+    {
+        $this->configuration()->client_id = 'id_here';
+        
+        $url = $this->authorizations()->authorizeUrl();
+        
+        $this->assertEquals($url, 'https://github.com/login/oauth/authorize?client_id=id_here');
+    }
 }

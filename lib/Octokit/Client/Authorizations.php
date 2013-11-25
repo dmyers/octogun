@@ -95,4 +95,28 @@ class Authorizations extends Api
     {
         return $this->request()->booleanFromResponse('delete', 'authorizations/' . $number, $options);
     }
+    
+    /**
+     * Get the URL to authorize a user for an application via the web flow
+     * 
+     * @see http://developer.github.com/v3/oauth/#web-application-flow
+     *
+     * @param array $options Optional options.
+     *
+     * @return string The url to redirect the user to authorize.
+     */
+    public function authorizeUrl(array $options = array())
+    {
+        $options = array_merge(array(
+            'client_id' => $this->configuration()->client_id,
+            'endpoint'  => $this->configuration()->web_endpoint,
+        ), $options);
+        
+        $authorize_url = $options['endpoint'];
+        unset($options['endpoint']);
+        $authorize_url .= 'login/oauth/authorize?';
+        $authorize_url .=  http_build_query($options);
+        
+        return $authorize_url;
+    }
 }
