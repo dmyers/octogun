@@ -13,7 +13,7 @@ class Client
     {
         $this->authentication = new Authentication($this);
         
-        $this->connection = new Connection($this);
+        $this->connection = new Connection($this, $options);
         
         $this->configuration = new Configuration($this);
         
