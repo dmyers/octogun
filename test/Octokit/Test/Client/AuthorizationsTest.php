@@ -18,6 +18,11 @@ class AuthorizationsTest extends \PHPUnit_Framework_TestCase
         $this->client->configuration->reset();
     }
     
+    public function configuration()
+    {
+        return $this->client->configuration;
+    }
+    
     public function request()
     {
         return $this->client->request;
