@@ -13,9 +13,9 @@ class Client
     {
         $this->authentication = new Authentication($this);
         
-        $this->connection = new Connection($this, $options);
+        $this->connection = new Connection($this);
         
-        $this->configuration = new Configuration($this);
+        $this->configuration = new Configuration($this, $options);
         
         $this->request = new Request($this);
     }
