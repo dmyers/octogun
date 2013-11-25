@@ -27,8 +27,7 @@ class Connection extends Api
             ), $options);
         }
         
-        $factory = new \Buzz\Message\Factory\Factory();
-        $connection = $factory->createRequest();
+        $connection = new \Buzz\Message\Request();
         $listener = false;
         
         if ($options['authenticate'] && $this->authentication()->authenticated()) {
