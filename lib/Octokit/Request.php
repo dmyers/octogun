@@ -115,6 +115,7 @@ class Request extends Api
         $connection->fromUrl($url);
         $connection->setResource('/' . $path);
         $connection->setMethod($method);
+        $connection->addFields($options);
         
         $request_host = $this->configuration()->request_host;
         
