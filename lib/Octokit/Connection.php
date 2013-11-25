@@ -18,16 +18,15 @@ class Connection extends Api
             ), $options);
         }
         
+        $connection = new \Buzz\Message\Form\FormRequest();
+        
         if (!$this->authentication()->oauthed()
             && !$this->authentication()->authenticated()
             && $this->authentication()->unauthedRateLimited()
         ) {
-            $options = array_merge(array(
-                'params' => $this->authentication()->unauthedRateLimitParams(),
-            ), $options);
+            $connection->addFields($this->authentication()->unauthedRateLimitParams());
         }
         
-        $connection = new \Buzz\Message\Form\FormRequest();
         $listener = false;
         
         if ($options['authenticate'] && $this->authentication()->authenticated()) {
