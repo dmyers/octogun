@@ -100,7 +100,7 @@ class AuthorizationsTest extends \PHPUnit_Framework_TestCase
     
     public function testAuthorizeUrl()
     {
-        $this->configuration()->client_id = 'id_here';
+        $this->configuration()->set('client_id', 'id_here');
         
         $url = $this->authorizations()->authorizeUrl();
         

@@ -41,7 +41,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     
     public function testCustomUserAgent()
     {
-        $this->configuration()->user_agent = 'My mashup';
+        $this->configuration()->set('user_agent', 'My mashup');
         
         $this->request()->setFixture(array(
             'headers' => array(
@@ -61,7 +61,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     
     public function testApiEndpointSet()
     {
-        $this->configuration()->api_endpoint = 'http://foo.dev';
+        $this->configuration()->set('api_endpoint', 'http://foo.dev');
         
         $this->assertEquals($this->configuration()->api_endpoint, 'http://foo.dev');
     }
@@ -73,7 +73,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     
     public function testRequestHostSettable()
     {
-        $this->configuration()->request_host = 'github.company.com';
+        $this->configuration()->set('request_host', 'github.company.com');
         
         $this->assertEquals($this->configuration()->request_host, 'github.company.com');
     }
