@@ -6,7 +6,7 @@ class Authentication extends Api
 {
     public function authentication()
     {
-        if ($this->configuration()->login && $this->configuration()->password) {
+        if (!empty($this->configuration()->login) && !empty($this->configuration()->password)) {
             return array(
                 'login'    => $this->configuration()->login,
                 'password' => $this->configuration()->password,
