@@ -15,7 +15,7 @@ class AuthorizationsTest extends \PHPUnit_Framework_TestCase
     
     public function tearDown()
     {
-        $this->client->configuration->reset();
+        $this->configuration()->reset();
     }
     
     public function configuration()

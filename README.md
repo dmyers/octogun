@@ -50,8 +50,8 @@ set the API and web endpoints before instantiating a client.
 
 ```php
 $client = new \Octokit\Client(array('login' => 'USERNAME', 'password' => 'PASSWORD'));
-$client->configuration->api_endpoint = 'https://github.company.com/api/v3';
-$client->configuration->web_endpoint = 'https://github.company.com/';
+$client->configuration()->set('api_endpoint', 'https://github.company.com/api/v3';
+$client->configuration()->set('web_endpoint', 'https://github.company.com/';
 ```
 ## Copyright
 

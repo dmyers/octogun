@@ -6,10 +6,13 @@ class Authentication extends Api
 {
     public function authentication()
     {
-        if (!empty($this->configuration()->get('login')) && !empty($this->configuration()->get('password'))) {
+        $login = $this->configuration()->get('login');
+        $password = $this->configuration()->get('password');
+        
+        if (!empty($login) && !empty($password)) {
             return array(
-                'login'    => $this->configuration()->get('login'),
-                'password' => $this->configuration()->get('password'),
+                'login'    => $login,
+                'password' => $password,
             );
         }
         
@@ -25,19 +28,27 @@ class Authentication extends Api
     
     public function oauthed()
     {
-        return !empty($this->configuration()->get('oauth_token'));
+        $oauth_token = $this->configuration()->get('oauth_token');
+        
+        return !empty($oauth_token);
     }
     
     public function unauthedRateLimited()
     {
-        return !empty($this->configuration()->get('client_id')) && !empty($this->configuration()->get('client_secret'));
+        $client_id = $this->configuration()->get('client_id');
+        $client_secret = $this->configuration()->get('client_secret');
+        
+        return !empty($client_id) && !empty($client_secret);
     }
     
     public function unauthedRateLimitParams()
     {
+        $client_id = $this->configuration()->get('client_id');
+        $client_secret = $this->configuration()->get('client_secret');
+        
         return array(
-            'client_id'     => $this->configuration()->get('client_id'),
-            'client_secret' => $this->configuration()->get('client_secret'),
+            'client_id'     => $client_id,
+            'client_secret' => $client_secret,
         );
     }
 }

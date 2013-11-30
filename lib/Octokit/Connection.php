@@ -12,10 +12,10 @@ class Connection extends Api
             'raw'              => false,
         ), $options);
         
-        if (!empty($this->configuration()->get('proxy'))) {
-            $options = array_merge(array(
-                'proxy' => $this->configuration()->get('proxy'),
-            ), $options);
+        $proxy = $this->configuration()->get('proxy');
+        
+        if (!empty($proxy)) {
+            $options = array_merge(array('proxy' => $proxy), $options);
         }
         
         $connection = new \Buzz\Message\Form\FormRequest();
