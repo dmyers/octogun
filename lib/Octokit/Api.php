@@ -14,22 +14,22 @@ class Api
     
     public function authentication()
     {
-        return $this->client->authentication;
+        return $this->client->authentication();
     }
     
     public function connection()
     {
-        return $this->client->connection;
+        return $this->client->connection();
     }
     
     public function configuration()
     {
-        return $this->client->configuration;
+        return $this->client->configuration();
     }
     
     public function request()
     {
-        return $this->client->request;
+        return $this->client->request();
     }
     
     public function __call($method, $args)

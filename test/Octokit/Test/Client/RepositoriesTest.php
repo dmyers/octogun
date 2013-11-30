@@ -20,7 +20,7 @@ class RepositoriesTest extends \PHPUnit_Framework_TestCase
     
     public function request()
     {
-        return $this->client->request;
+        return $this->client->request();
     }
     
     public function repos()

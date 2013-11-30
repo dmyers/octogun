@@ -18,12 +18,12 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     
     public function configuration()
     {
-        return $this->client->configuration;
+        return $this->client->configuration();
     }
     
     public function request()
     {
-        return $this->client->request;
+        return $this->client->request();
     }
     
     public function testDefaultUserAgent()
