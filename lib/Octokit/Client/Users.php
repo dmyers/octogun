@@ -43,11 +43,12 @@ class Users extends Api
      * 
      * @see http://developer.github.com/v3/users/#get-a-single-user
      *
-     * @param string $user A GitHub user name.
+     * @param string $user    A GitHub user name.
+     * @param array  $options Optional options.
      *
      * @return array
      */
-    public function user($user = null)
+    public function user($user = null, array $options = array())
     {
         if (!empty($user)) {
             return $this->request()->get('users/' . $user);
