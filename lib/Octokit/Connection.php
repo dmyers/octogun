@@ -30,8 +30,10 @@ class Connection extends Api
         $listener = false;
         
         if ($options['authenticate'] && $this->authentication()->authenticated()) {
+            $authentication = $this->authentication()->authentication();
+            
             $listener = new \Buzz\Listener\BasicAuthListener(
-                $this->configuration()->login, $this->configuration()->password
+                $authentication['login'], $authentication['password']
             );
         }
         
