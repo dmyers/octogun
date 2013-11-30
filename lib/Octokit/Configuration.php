@@ -4,18 +4,18 @@ namespace Octokit;
 
 class Configuration extends Api
 {
-    public $api_version;
-    public $api_endpoint;
-    public $web_endpoint;
-    public $status_api_endpoint;
-    public $login;
-    public $password;
-    public $proxy;
-    public $oauth_token;
-    public $client_id;
-    public $client_secret;
-    public $request_host;
-    public $user_agent;
+    protected $api_version;
+    protected $api_endpoint;
+    protected $web_endpoint;
+    protected $status_api_endpoint;
+    protected $login;
+    protected $password;
+    protected $proxy;
+    protected $oauth_token;
+    protected $client_id;
+    protected $client_secret;
+    protected $request_host;
+    protected $user_agent;
     
     const DEFAULT_API_VERSION = 3;
     const DEFAULT_API_ENDPOINT = 'https://api.github.com/';
