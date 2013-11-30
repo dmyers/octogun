@@ -47,10 +47,15 @@ class Configuration extends Api
         $this->user_agent = self::DEFAULT_USER_AGENT;
     }
     
-    public function set(array $options = array())
+    public function set($option, $value = null)
     {
-        foreach ($options as $key => $value) {
-            $this->$key = $value;
+        if (is_array($option)) {
+            foreach ($option as $key => $value) {
+                $this->set($key, $value);
+            }
+        }
+        else {
+            $this->$option = $value;
         }
     }
     
