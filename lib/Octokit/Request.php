@@ -136,9 +136,18 @@ class Request extends Api
     {
         $body = $response->getContent();
         
+        $is_json = false;
+        
         $content_type = $response->getHeader('Content-Type');
         
-        if (!empty($content_type) && $content_type == 'application/json') {
+        if (!empty($content_type) && strpos($content_type, 'application/json') !== false) {
+            $is_json = true;
+        }
+        elseif (substr($body, 0, 1) == '{') {
+            $is_json = true;
+        }
+        
+        if ($is_json) {
             $body = json_decode($body, true);
         }
         
