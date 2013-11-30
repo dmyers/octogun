@@ -53,4 +53,13 @@ class Configuration extends Api
             $this->$key = $value;
         }
     }
+    
+    public function get($option)
+    {
+        if (property_exists($this, $option)) {
+            return $this->$option;
+        }
+        
+        return null;
+    }
 }
