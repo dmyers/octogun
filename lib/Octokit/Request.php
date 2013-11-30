@@ -143,7 +143,7 @@ class Request extends Api
         if (!empty($content_type) && strpos($content_type, 'application/json') !== false) {
             $is_json = true;
         }
-        elseif (substr($body, 0, 1) == '{') {
+        elseif (is_string($body) && substr($body, 0, 1) == '{') {
             $is_json = true;
         }
         
