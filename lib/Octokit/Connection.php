@@ -24,7 +24,7 @@ class Connection extends Api
             && !$this->authentication()->authenticated()
             && $this->authentication()->unauthedRateLimited()
         ) {
-            $connection->addFields($this->authentication()->unauthedRateLimitParams());
+            $options = array_merge($this->authentication()->unauthedRateLimitParams(), $options);
         }
         
         $listener = false;
@@ -49,6 +49,7 @@ class Connection extends Api
         return array(
             'connection' => $connection,
             'listener'   => $listener,
+            'options'    => $options,
         );
     }
 }

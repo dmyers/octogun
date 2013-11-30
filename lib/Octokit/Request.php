@@ -85,6 +85,7 @@ class Request extends Api
         
         $connection = $this->connection()->create($options);
         $listener = $connection['listener'];
+        $options = $connection['options'];
         $connection = $connection['connection'];
         
         if (!empty($options['accept'])) {
