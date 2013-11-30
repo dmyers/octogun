@@ -4,10 +4,10 @@ namespace Octokit;
 
 class Client
 {
-    public $authentication;
-    public $connection;
-    public $configuration;
-    public $request;
+    protected $authentication;
+    protected $connection;
+    protected $configuration;
+    protected $request;
     
     public function __construct(array $options = array())
     {
