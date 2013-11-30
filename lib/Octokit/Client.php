@@ -20,6 +20,26 @@ class Client
         $this->request = new Request($this);
     }
     
+    public function authentication()
+    {
+        return $this->authentication;
+    }
+    
+    public function connection()
+    {
+        return $this->connection;
+    }
+    
+    public function configuration()
+    {
+        return $this->configuration;
+    }
+    
+    public function request()
+    {
+        return $this->request;
+    }
+    
     public function __call($method, $args)
     {
         $class_name = '\Octokit\Client\\' . ucwords($method);
