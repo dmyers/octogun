@@ -59,8 +59,8 @@ class Request extends Api
         
         $token = null;
         
-        if (!empty($options['token'])) {
-            $token = $options['token'];
+        if (!empty($options['access_token'])) {
+            $token = $options['access_token'];
         }
         else if (!empty($options['oauth_token'])) {
             $token = $options['oauth_token'];
