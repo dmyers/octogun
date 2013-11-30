@@ -113,10 +113,16 @@ class Request extends Api
             $browser->addListener($listener);
         }
         
+        if (strtolower($method) == 'get') {
+            $path .= '?' . http_build_query($options);
+        }
+        elseif (in_array(strtolower($method), array('patch', 'post', 'put'))) {
+            $connection->setContent(json_encode($options, true));
+        }
+        
         $connection->fromUrl($url);
         $connection->setResource('/' . $path);
         $connection->setMethod($method);
-        $connection->addFields($options);
         
         $request_host = $this->configuration()->get('request_host');
         

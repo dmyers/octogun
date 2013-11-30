@@ -18,7 +18,7 @@ class Connection extends Api
             $options = array_merge(array('proxy' => $proxy), $options);
         }
         
-        $connection = new \Buzz\Message\Form\FormRequest();
+        $connection = new \Buzz\Message\Request();
         
         if (!$this->authentication()->oauthed()
             && !$this->authentication()->authenticated()
@@ -41,7 +41,7 @@ class Connection extends Api
             $connection->addHeader('Content-Type: application/x-www-form-urlencoded');
         }
         else {
-            //$connection->addHeader('Content-Type: application/json');
+            $connection->addHeader('Content-Type: application/json');
         }
         
         $connection->addHeader('User-Agent: ' . $this->configuration()->get('user_agent'));
