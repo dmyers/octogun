@@ -108,8 +108,8 @@ class Authorizations extends Api
     public function authorizeUrl(array $options = array())
     {
         $options = array_merge(array(
-            'client_id' => $this->configuration()->client_id,
-            'endpoint'  => $this->configuration()->web_endpoint,
+            'client_id' => $this->configuration()->get('client_id'),
+            'endpoint'  => $this->configuration()->get('web_endpoint'),
         ), $options);
         
         $authorize_url = $options['endpoint'];

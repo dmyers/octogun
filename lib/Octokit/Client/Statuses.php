@@ -57,7 +57,7 @@ class Statuses extends Api
     public function githubStatus()
     {
         $options = array(
-            'endpoint' => $this->configuration()->status_api_endpoint,
+            'endpoint' => $this->configuration()->get('status_api_endpoint'),
         );
         
         return $this->request()->get('status.json', $options);
@@ -73,7 +73,7 @@ class Statuses extends Api
     public function githubStatusLastMessage()
     {
         $options = array(
-            'endpoint' => $this->configuration()->status_api_endpoint,
+            'endpoint' => $this->configuration()->get('status_api_endpoint'),
         );
         
         return $this->request()->get('last-message.json', $options);
@@ -89,7 +89,7 @@ class Statuses extends Api
     public function githubStatusMessages()
     {
         $options = array(
-            'endpoint' => $this->configuration()->status_api_endpoint,
+            'endpoint' => $this->configuration()->get('status_api_endpoint'),
         );
         
         return $this->request()->get('messages.json', $options);

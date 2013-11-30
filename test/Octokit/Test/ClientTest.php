@@ -56,25 +56,25 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     
     public function testApiEndpointDefault()
     {
-        $this->assertEquals($this->configuration()->api_endpoint, 'https://api.github.com/');
+        $this->assertEquals($this->configuration()->get('api_endpoint'), 'https://api.github.com/');
     }
     
     public function testApiEndpointSet()
     {
         $this->configuration()->set('api_endpoint', 'http://foo.dev');
         
-        $this->assertEquals($this->configuration()->api_endpoint, 'http://foo.dev');
+        $this->assertEquals($this->configuration()->get('api_endpoint'), 'http://foo.dev');
     }
     
     public function testRequestHostDefault()
     {
-        $this->assertNull($this->configuration()->request_host);
+        $this->assertNull($this->configuration()->get('request_host'));
     }
     
     public function testRequestHostSettable()
     {
         $this->configuration()->set('request_host', 'github.company.com');
         
-        $this->assertEquals($this->configuration()->request_host, 'github.company.com');
+        $this->assertEquals($this->configuration()->get('request_host'), 'github.company.com');
     }
 }

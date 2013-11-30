@@ -66,7 +66,7 @@ class Request extends Api
             $token = $options['oauth_token'];
         }
         else {
-            $token = $this->configuration()->oauth_token;
+            $token = $this->configuration()->get('oauth_token');
         }
         
         $force_urlencoded = false;
@@ -80,7 +80,7 @@ class Request extends Api
         if (!empty($options['endpoint'])) {
             $url = $options['endpoint'];
         } else {
-            $url = $this->configuration()->api_endpoint;
+            $url = $this->configuration()->get('api_endpoint');
         }
         
         $connection = $this->connection()->create($options);
@@ -117,7 +117,7 @@ class Request extends Api
         $connection->setMethod($method);
         $connection->addFields($options);
         
-        $request_host = $this->configuration()->request_host;
+        $request_host = $this->configuration()->get('request_host');
         
         if (!empty($request_host)) {
             $connection->setHost($request_host);

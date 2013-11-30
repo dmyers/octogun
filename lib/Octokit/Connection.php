@@ -12,9 +12,9 @@ class Connection extends Api
             'raw'              => false,
         ), $options);
         
-        if (!empty($this->configuration()->proxy)) {
+        if (!empty($this->configuration()->get('proxy'))) {
             $options = array_merge(array(
-                'proxy' => $this->configuration()->proxy,
+                'proxy' => $this->configuration()->get('proxy'),
             ), $options);
         }
         
@@ -44,7 +44,7 @@ class Connection extends Api
             //$connection->addHeader('Content-Type: application/json');
         }
         
-        $connection->addHeader('User-Agent: ' . $this->configuration()->user_agent);
+        $connection->addHeader('User-Agent: ' . $this->configuration()->get('user_agent'));
         
         return array(
             'connection' => $connection,

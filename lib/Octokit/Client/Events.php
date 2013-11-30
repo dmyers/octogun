@@ -124,7 +124,8 @@ class Events extends Api
      */
     public function organizationEvents($org, array $options = array())
     {
-        $login = $this->configuration()->login;
+        $login = $this->configuration()->get('login');
+        
         return $this->request()->get('users/' . $login . '/events/orgs/' . $org, $options);
     }
     

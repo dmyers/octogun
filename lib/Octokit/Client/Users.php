@@ -73,15 +73,15 @@ class Users extends Api
     public function accessToken($code, $app_id = null, $app_secret = null, array $options = array())
     {
         if (empty($app_id)) {
-            $app_id = $this->configuration()->client_id;
+            $app_id = $this->configuration()->get('client_id');
         }
         
         if (empty($app_secret)) {
-            $app_secret = $this->configuration()->client_secret;
+            $app_secret = $this->configuration()->get('client_secret');
         }
         
         $options = array_merge(array(
-            'endpoint'      => $this->configuration()->web_endpoint,
+            'endpoint'      => $this->configuration()->get('web_endpoint'),
             'code'          => $code,
             'client_id'     => $app_id,
             'client_secret' => $app_secret,
@@ -141,7 +141,7 @@ class Users extends Api
     public function followers($user = null, array $options = array())
     {
         if (empty($user)) {
-            $user = $this->configuration()->login;
+            $user = $this->configuration()->get('login');
         }
         
         return $this->request()->get('users/'. $user . '/followers', $options);
@@ -160,7 +160,7 @@ class Users extends Api
     public function following($user = null, array $options = array())
     {
         if (empty($user)) {
-            $user = $this->configuration()->login;
+            $user = $this->configuration()->get('login');
         }
         
         return $this->request()->get('users/'. $user . '/following', $options);
@@ -184,7 +184,7 @@ class Users extends Api
         $target = $args[0];
         
         if (empty($args[1])) {
-            $user = $this->configuration()->login;
+            $user = $this->configuration()->get('login');
         }
         else {
             $user = $args[1];
@@ -240,7 +240,7 @@ class Users extends Api
     public function starred($user = null, array $options = array())
     {
         if (empty($user)) {
-            $user = $this->configuration()->login;
+            $user = $this->configuration()->get('login');
         }
         
         return $this->request()->get('users/' . $user . '/starred', $options);
@@ -279,7 +279,7 @@ class Users extends Api
     public function watched($user = null, array $options = array())
     {
         if (empty($user)) {
-            $user = $this->configuration()->login;
+            $user = $this->configuration()->get('login');
         }
         
         return $this->request()->get('users/' . $user . '/watched', $options);
@@ -465,7 +465,7 @@ class Users extends Api
     public function subscriptions($user = null, array $options = array())
     {
         if (empty($user)) {
-            $user = $this->configuration()->login;
+            $user = $this->configuration()->get('login');
         }
         
         return $this->request()->get('users/' . $user . '/subscriptions', $options);
