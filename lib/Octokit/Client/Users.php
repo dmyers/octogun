@@ -85,6 +85,7 @@ class Users extends Api
             'code'          => $code,
             'client_id'     => $app_id,
             'client_secret' => $app_secret,
+            'accept'        => 'application/json',
         ), $options);
         
         return $this->request()->post('login/oauth/access_token', $options);
