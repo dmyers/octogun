@@ -193,4 +193,24 @@ class IssuesTest extends \PHPUnit_Framework_TestCase
         
         $this->assertTrue($result);
     }
+    
+    public function testIssueEvents()
+    {
+        $this->request()->setFixture('issue_events');
+        
+        $events = $this->issues()->issueEvents('pengwynn/octokit', 38);
+        
+        $this->assertEquals($events[0]['event'], 'mentioned');
+        $this->assertEquals($events[count($events) - 1]['actor']['login'], 'ctshryock');
+    }
+    
+    public function testIssueEvent()
+    {
+        $this->request()->setFixture('issue_event');
+        
+        $event = $this->issues()->issueEvent('pengwynn/octokit', 3094334);
+        
+        $this->assertEquals($event['actor']['login'], 'sferik');
+        $this->assertEquals($event['event'], 'closed');
+    }
 }
