@@ -148,8 +148,7 @@ class Contents extends Api
     public function archiveLink($repo, array $options = array())
     {
         $repo_ref = $options['ref'];
-        $format = $options['format'];
-        $format = !empty($format) ? $format : 'tarball';
+        $format = isset($options['format']) ? $options['format'] : 'tarball';
         
         $request = $this->request()->sendRequest('head', 'repos/' . $repo . '/' . $format . '/' . $repo_ref, $options);
         $response = $request->response();
