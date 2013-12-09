@@ -76,7 +76,7 @@ class Contents extends Api
             throw new Exception('content required');
         }
         
-        $options['content'] = base64_encode($content);
+        $options['content'] = trim(base64_encode($content), "\r\n");
         $options['message'] = $message;
         
         return $this->request()->put('repos/' . $repo . '/contents/' . $path, $options);
