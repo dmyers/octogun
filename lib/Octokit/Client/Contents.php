@@ -138,7 +138,7 @@ class Contents extends Api
     /**
      * This method will provide a URL to download a tarball or zipball archive for a repository.
      * 
-     * @see http://developer.github.com/v3/repos/contents/
+     * @see http://developer.github.com/v3/repos/contents/#get-archive-link
      * 
      * @param string $repo    A GitHub repository.
      * @param array  $options Optional options.
