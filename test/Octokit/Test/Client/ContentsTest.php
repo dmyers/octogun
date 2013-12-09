@@ -93,7 +93,7 @@ class ContentsTest extends \PHPUnit_Framework_TestCase
     {
         $this->request()->setFixture('delete_content');
         
-        $response = $this->contents()->deleteContents('pengwynn/api-sandbox', 'foo/bar/baz.txt', 'I am rm-ing', '4d149b826e7305659006eb64cfecd3be68d0f2f0', 'Here be moar content');
+        $response = $this->contents()->deleteContents('pengwynn/api-sandbox', 'foo/bar/baz.txt', 'I am rm-ing', '4d149b826e7305659006eb64cfecd3be68d0f2f0');
         
         $this->assertEquals($response['commit']['sha'], '960a747b2f5c3837184b84e1f8cae7ef1a765e2f');
     }
