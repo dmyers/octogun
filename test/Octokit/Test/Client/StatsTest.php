@@ -75,6 +75,6 @@ class StatsTest extends \PHPUnit_Framework_TestCase
         
         $stats = $this->stats()->participationStats('pengwynn/octokit');
         
-        $this->assertEquals($stats[count($stats) = 1][0], 6);
+        $this->assertEquals($stats[count($stats) - 1][0], 6);
     }
 }
