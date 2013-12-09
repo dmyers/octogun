@@ -51,7 +51,7 @@ class StatsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($stats[0]['week'], 1336867200);
     }
     
-    public function testCommitActivityStats()
+    public function testCodeFrequencyStats()
     {
         $this->request()->setFixture('code_frequency_stats');
         
