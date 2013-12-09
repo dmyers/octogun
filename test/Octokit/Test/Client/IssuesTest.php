@@ -73,7 +73,7 @@ class IssuesTest extends \PHPUnit_Framework_TestCase
     {
         $this->request()->setFixture('org_issues');
         
-        $issues = $this->issues()->orgIssues();
+        $issues = $this->issues()->orgIssues('github');
         
         $this->assertEquals($issues[0]['number'], 43);
     }
@@ -113,7 +113,7 @@ class IssuesTest extends \PHPUnit_Framework_TestCase
         $issue = $this->issues()->closeIssue('ctshryock/octokit', 12);
         
         $this->assertEquals($issue['number'], 12);
-        $this->assertTrue(array_key_exists($issue, 'closed_at'));
+        $this->assertTrue(array_key_exists('closed_at', $issue));
         $this->assertEquals($issue['state'], 'closed');
     }
     
@@ -156,7 +156,7 @@ class IssuesTest extends \PHPUnit_Framework_TestCase
     
     public function testIssueComment()
     {
-        $this->request()->setFixture('comments');
+        $this->request()->setFixture('comment');
         
         $comment = $this->issues()->issueComment('pengwynn/octokit', 25);
         

@@ -48,9 +48,7 @@ class Issues extends Api
         
         $path .= '/issues';
         
-        $issues = $this->request()->get($path, $options);
-        
-        return $issues['issues'];
+        return $this->request()->get($path, $options);
     }
     
     /**
@@ -94,7 +92,7 @@ class Issues extends Api
      *
      * @return array Your newly created issue.
      */
-    public function createIssue($repo, $title, $body, array $otions = array())
+    public function createIssue($repo, $title, $body, array $options = array())
     {
         $options = array_merge(array(
             'title' => $title,
@@ -247,7 +245,7 @@ class Issues extends Api
     public function addComment($repo, $number, $comment, array $options = array())
     {
         $options = array_merge(array(
-            'body' => $body,
+            'body' => $comment,
         ), $options);
         
         return $this->request()->post('repos/' . $repo . '/issues/' . $number . '/comments', $options);
@@ -268,7 +266,7 @@ class Issues extends Api
     public function updateComment($repo, $number, $comment, array $options = array())
     {
         $options = array_merge(array(
-            'body' => $body,
+            'body' => $comment,
         ), $options);
         
         return $this->request()->patch('repos/' . $repo . '/issues/comments/' . $number, $options);
