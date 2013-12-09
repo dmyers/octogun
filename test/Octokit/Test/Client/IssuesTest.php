@@ -35,7 +35,7 @@ class IssuesTest extends \PHPUnit_Framework_TestCase
     
     public function testSearchIssues()
     {
-        $this->request()->setFixture('issues');
+        $this->request()->setFixture('legacy/issues');
         
         $issues = $this->issues()->searchIssues('sferik/rails_admin', 'activerecord');
         
