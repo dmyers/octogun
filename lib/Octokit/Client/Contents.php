@@ -151,8 +151,7 @@ class Contents extends Api
         $format = isset($options['format']) ? $options['format'] : 'tarball';
         
         $request = $this->request()->sendRequest('head', 'repos/' . $repo . '/' . $format . '/' . $repo_ref, $options);
-        $response = $request->response();
         
-        return $response->getHeader('Location');
+        return $request->getHeader('Location');
     }
 }
