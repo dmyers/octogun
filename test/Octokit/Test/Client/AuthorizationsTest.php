@@ -98,6 +98,34 @@ class AuthorizationsTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($delete);
     }
     
+    public function testScopesWithOAuthToken()
+    {
+        $this->configuration()->set('oauth_token', 'abcdabcdabcdabcdabcdabcdabcdabcdabcd');
+        
+        $this->request()->setFixture(array(
+            'headers' => array(
+                'X-OAuth-Scopes' => 'user, gist',
+            ),
+        ));
+        
+        $scopes = $this->authorizations()->scopes();
+        
+        $this->assertEquals($scopes, array('gist', 'user'));
+    }
+    
+    public function testScopesWithOneOffToken()
+    {
+        $this->request()->setFixture(array(
+            'headers' => array(
+                'X-OAuth-Scopes' => 'user, gist, repo',
+            ),
+        ));
+        
+        $scopes = $this->authorizations()->scopes('abcdabcdabcdabcdabcdabcdabcdabcdabcd');
+        
+        $this->assertEquals($scopes, array('gist', 'repo', 'user'));
+    }
+    
     public function testAuthorizeUrl()
     {
         $this->configuration()->set('client_id', 'id_here');
