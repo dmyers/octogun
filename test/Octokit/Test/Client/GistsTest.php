@@ -159,11 +159,7 @@ class GistsTest extends \PHPUnit_Framework_TestCase
             'body'   => '',
         ));
         
-        try {
-            $starred = $this->gists()->gistStarred(12345);
-        } catch (\Octokit\Exception\NotFoundException $e) {
-            $starred = false;
-        }
+        $starred = $this->gists()->gistStarred(12345);
         
         $this->assertFalse($starred);
     }

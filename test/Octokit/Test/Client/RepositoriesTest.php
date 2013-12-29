@@ -530,11 +530,7 @@ class RepositoriesTest extends \PHPUnit_Framework_TestCase
             'body'   => '',
         ));
         
-        try {
-            $delete = $this->repos()->deleteSubscription('pengwynn/octokit');
-        } catch (\Octokit\Exception\NotFoundException $e) {
-            $delete = false;
-        }
+        $delete = $this->repos()->deleteSubscription('pengwynn/octokit');
         
         $this->assertFalse($delete);
     }

@@ -160,11 +160,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
             'body'   => '',
         ));
         
-        try {
-            $follows = $this->users()->follows('sferik', 'dogbrainz');
-        } catch (\Octokit\Exception\NotFoundException $e) {
-            $follows = false;
-        }
+        $follows = $this->users()->follows('sferik', 'dogbrainz');
         
         $this->assertFalse($follows);
     }
@@ -212,11 +208,7 @@ class UsersTest extends \PHPUnit_Framework_TestCase
             'body'   => '',
         ));
         
-        try {
-            $starred = $this->users()->stars('sferik', 'dogbrainz');
-         } catch (\Octokit\Exception\NotFoundException $e) {
-            $starred = false;
-        }
+        $starred = $this->users()->stars('sferik', 'dogbrainz');
         
         $this->assertFalse($starred);
     }
