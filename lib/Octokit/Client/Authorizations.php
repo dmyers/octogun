@@ -97,6 +97,30 @@ class Authorizations extends Api
     }
     
     /**
+     * Check scopes for a token.
+     * 
+     * @see http://developer.github.com/v3/oauth/#scopes
+     *
+     * @param string $token GitHub OAuth token.
+     *
+     * @return array OAuth scopes.
+     */
+    public function scopes($token = null)
+    {
+        $response = $this->request()->sendRequest('get', 'user', array('access_token' => $token));
+        $scopes = $response->getHeader('X-OAuth-Scopes');
+        $scopes = explode(',', $scopes);
+        
+        foreach ($scopes as &$scope) {
+            $scope = trim($scope);
+        }
+        
+        sort($scopes);
+        
+        return $scopes;
+    }
+    
+    /**
      * Get the URL to authorize a user for an application via the web flow
      * 
      * @see http://developer.github.com/v3/oauth/#web-application-flow
