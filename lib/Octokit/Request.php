@@ -48,7 +48,11 @@ class Request extends Api
     
     public function booleanFromResponse($method, $path, array $options = array())
     {
-        $response = $this->sendRequest($method, $path, $options);
+        try {
+            $response = $this->sendRequest($method, $path, $options);
+        } catch (\Octokit\Exception\NotFoundException $e) {
+            return false;
+        }
         
         return $response->getStatusCode() == 204;
     }
