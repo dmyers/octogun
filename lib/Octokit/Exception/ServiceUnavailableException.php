@@ -2,6 +2,6 @@
 
 namespace Octokit\Exception;
 
-class ServiceUnavailableException extends \Exception
+class ServiceUnavailableException extends ErrorException
 {
 }

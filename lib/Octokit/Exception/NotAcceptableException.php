@@ -2,6 +2,6 @@
 
 namespace Octokit\Exception;
 
-class NotAcceptableException extends \Exception
+class NotAcceptableException extends ErrorException
 {
 }

@@ -2,6 +2,6 @@
 
 namespace Octokit\Exception;
 
-class ForbiddenException extends \Exception
+class ForbiddenException extends ErrorException
 {
 }

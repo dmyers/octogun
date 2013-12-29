@@ -2,6 +2,6 @@
 
 namespace Octokit\Exception;
 
-class UnauthorizedException extends \Exception
+class UnauthorizedException extends ErrorException
 {
 }

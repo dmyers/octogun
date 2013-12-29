@@ -2,6 +2,6 @@
 
 namespace Octokit\Exception;
 
-class InternalServerErrorException extends \Exception
+class InternalServerErrorException extends ErrorException
 {
 }

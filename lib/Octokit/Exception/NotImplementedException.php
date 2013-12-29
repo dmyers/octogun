@@ -2,6 +2,6 @@
 
 namespace Octokit\Exception;
 
-class NotImplementedException extends \Exception
+class NotImplementedException extends ErrorException
 {
 }

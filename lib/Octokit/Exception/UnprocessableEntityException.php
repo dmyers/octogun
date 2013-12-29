@@ -2,6 +2,6 @@
 
 namespace Octokit\Exception;
 
-class UnprocessableEntityException extends \Exception
+class UnprocessableEntityException extends ErrorException
 {
 }

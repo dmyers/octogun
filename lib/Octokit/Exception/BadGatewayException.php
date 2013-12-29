@@ -2,6 +2,6 @@
 
 namespace Octokit\Exception;
 
-class BadGatewayException extends \Exception
+class BadGatewayException extends ErrorException
 {
 }

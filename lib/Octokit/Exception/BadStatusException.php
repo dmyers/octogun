@@ -2,6 +2,6 @@
 
 namespace Octokit\Exception;
 
-class BadStatusException extends \Exception
+class BadStatusException extends ErrorException
 {
 }

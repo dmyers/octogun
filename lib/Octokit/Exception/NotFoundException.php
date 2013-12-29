@@ -2,6 +2,6 @@
 
 namespace Octokit\Exception;
 
-class NotFoundException extends \Exception
+class NotFoundException extends ErrorException
 {
 }
