@@ -221,7 +221,7 @@ class Users extends Api
      * @param string $user    Username of the user to unfollow.
      * @param array  $options Optional options.
      *
-     * @return [type]
+     * @return bool True if unfollow was successful, false otherwise.
      */
     public function unfollow($user, array $options = array())
     {
