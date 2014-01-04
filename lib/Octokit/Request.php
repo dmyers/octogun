@@ -167,38 +167,44 @@ class Request extends Api
     
     public function handleErrors($response)
     {
+        $exception = null;
+        
         switch ($response->getStatusCode()) {
             case 400:
-                throw new Exception\BadRequestException();
+                $exception = new Exception\BadRequestException();
                 break;
             case 401:
-                throw new Exception\UnauthorizedException();
+                $exception = new Exception\UnauthorizedException();
                 break;
             case 403:
-                throw new Exception\ForbiddenException();
+                $exception = new Exception\ForbiddenException();
                 break;
             case 404:
-                throw new Exception\NotFoundException();
+                $exception = new Exception\NotFoundException();
                 break;
             case 406:
-                throw new Exception\NotAcceptableException();
+                $exception = new Exception\NotAcceptableException();
                 break;
             case 422:
-                throw new Exception\UnprocessableEntityException();
+                $exception = new Exception\UnprocessableEntityException();
                 break;
             case 500:
-                throw new Exception\InternalServerErrorException();
+                $exception = new Exception\InternalServerErrorException();
                 break;
             case 501:
-                throw new Exception\NotImplementedException();
+                $exception = new Exception\NotImplementedException();
                 break;
             case 502:
-                throw new Exception\BadGatewayException();
+                $exception = new Exception\BadGatewayException();
                 break;
             case 503:
-                throw new Exception\ServiceUnavailableException();
+                $exception = new Exception\ServiceUnavailableException();
                 break;
+            default:
+                return;
         }
+        
+        throw $exception;
     }
     
     public function setFixture($fixture)
