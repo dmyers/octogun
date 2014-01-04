@@ -18,16 +18,6 @@ class NotificationsTest extends \Octokit\Test\OctokitTestCase
         $this->configuration()->reset();
     }
     
-    public function configuration()
-    {
-        return $this->client->configuration();
-    }
-    
-    public function request()
-    {
-        return $this->client->request();
-    }
-    
     public function notifications()
     {
         return $this->client->notifications();

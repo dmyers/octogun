@@ -16,16 +16,6 @@ class ClientTest extends \Octokit\Test\OctokitTestCase
         $this->configuration()->reset();
     }
     
-    public function configuration()
-    {
-        return $this->client->configuration();
-    }
-    
-    public function request()
-    {
-        return $this->client->request();
-    }
-    
     public function testDefaultUserAgent()
     {
         $this->request()->setFixture(array(

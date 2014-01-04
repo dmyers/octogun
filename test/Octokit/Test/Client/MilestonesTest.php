@@ -18,16 +18,6 @@ class MilestoneTest extends \Octokit\Test\OctokitTestCase
         $this->configuration()->reset();
     }
     
-    public function configuration()
-    {
-        return $this->client->configuration();
-    }
-    
-    public function request()
-    {
-        return $this->client->request();
-    }
-    
     public function milestones()
     {
         return $this->client->milestones();

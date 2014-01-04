@@ -18,16 +18,6 @@ class GitignoreTest extends \Octokit\Test\OctokitTestCase
         $this->configuration()->reset();
     }
     
-    public function configuration()
-    {
-        return $this->client->configuration();
-    }
-    
-    public function request()
-    {
-        return $this->client->request();
-    }
-    
     public function gitignore()
     {
         return $this->client->gitignore();
