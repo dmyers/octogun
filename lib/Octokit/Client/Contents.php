@@ -73,7 +73,7 @@ class Contents extends Api
         $content = $args[3];
         
         if (empty($content)) {
-            throw new Exception('content required');
+            throw new \InvalidArgumentException('content required');
         }
         
         $options['content'] = trim(base64_encode($content), "\r\n");
