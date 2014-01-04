@@ -43,7 +43,7 @@ class Labels extends Api
      * @see http://developer.github.com/v3/issues/labels/#create-a-label
      *
      * @param string $repo    A GitHub repository.
-     * @param string $name    A new label.
+     * @param string $label   A new label.
      * @param string $color   A color, in hex, without the leading #.
      * @param array  $options Optional options.
      * 
