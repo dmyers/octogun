@@ -66,7 +66,7 @@ class GistsTest extends \Octokit\Test\OctokitTestCase
     
     public function testCreateGist()
     {
-        $gist_content = json_decode(file_get_contents(__DIR__ . '/../../../Fixtures/gist.json'), true);
+        $gist_content = json_decode($this->fixture('gist.json'), true);
         
         $new_gist = array(
             'description' => $gist_content['description'],
@@ -83,7 +83,7 @@ class GistsTest extends \Octokit\Test\OctokitTestCase
     
     public function testEditGist()
     {
-        $gist_content = json_decode(file_get_contents(__DIR__ . '/../../../Fixtures/gist.json'), true);
+        $gist_content = json_decode($this->fixture('gist.json'), true);
         
         $gist_id = $gist_content['id'];
         

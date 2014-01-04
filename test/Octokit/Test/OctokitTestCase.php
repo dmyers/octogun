@@ -27,4 +27,9 @@ class OctokitTestCase extends \PHPUnit_Framework_TestCase
     {
         return $this->client->request();
     }
+    
+    public function fixture($fixture)
+    {
+        return file_get_contents(__DIR__ . '/../../Fixtures/' . $fixture);
+    }
 }

@@ -16,7 +16,7 @@ class SayTest extends \Octokit\Test\OctokitTestCase
     
     public function testSayWithoutCustomText()
     {
-        $say_content = file_get_contents(__DIR__ . '/../../../Fixtures/say.txt');
+        $say_content = $this->fixture('say.txt');
         
         $this->request()->setFixture(array(
             'body'    => $say_content,
@@ -30,7 +30,7 @@ class SayTest extends \Octokit\Test\OctokitTestCase
     
     public function testSayWithCustomText()
     {
-        $say_content = file_get_contents(__DIR__ . '/../../../Fixtures/say_custom.txt');
+        $say_content = $this->fixture('say_custom.txt');
         
         $this->request()->setFixture(array(
             'body'    => $say_content,

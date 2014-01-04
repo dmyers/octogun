@@ -16,7 +16,7 @@ class MarkdownTest extends \Octokit\Test\OctokitTestCase
     
     public function testMarkdown()
     {
-        $markdown_content = file_get_contents(__DIR__ . '/../../../Fixtures/markdown_gfm');
+        $markdown_content = $this->fixture('markdown_gfm');
         
         $this->request()->setFixture(array(
             'body' => $markdown_content,

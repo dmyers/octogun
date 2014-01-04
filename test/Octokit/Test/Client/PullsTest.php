@@ -103,7 +103,7 @@ class PullsTest extends \Octokit\Test\OctokitTestCase
     
     public function testCreatePullRequestComment()
     {
-        $comment_content = json_decode(file_get_contents(__DIR__ . '/../../../Fixtures/pull_request_comment_create.json'), true);
+        $comment_content = json_decode($this->fixture('pull_request_comment_create.json'), true);
         
         $new_comment = array(
             'body'      => $comment_content['body'],
