@@ -4,7 +4,7 @@ namespace Octokit\Test;
 
 use Octokit\Client;
 
-class ClientTest extends \PHPUnit_Framework_TestCase
+class ClientTest extends \Octokit\Test\OctokitTestCase
 {
     public function setUp()
     {

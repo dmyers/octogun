@@ -4,7 +4,7 @@ namespace Octokit\Test\Client;
 
 use Octokit\Client;
 
-class PullsTest extends \PHPUnit_Framework_TestCase
+class PullsTest extends \Octokit\Test\OctokitTestCase
 {
     public $client;
     

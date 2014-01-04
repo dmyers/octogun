@@ -20,7 +20,8 @@
   },
   "autoload": {
     "psr-0": {
-      "Octokit": "lib/"
+      "Octokit": "lib/",
+      "Octokit\\Test": "test/"
     }
   }
 }

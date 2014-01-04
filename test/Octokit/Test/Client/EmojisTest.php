@@ -4,7 +4,7 @@ namespace Octokit\Test\Client;
 
 use Octokit\Client;
 
-class EmojisTest extends \PHPUnit_Framework_TestCase
+class EmojisTest extends \Octokit\Test\OctokitTestCase
 {
     public $client;
     

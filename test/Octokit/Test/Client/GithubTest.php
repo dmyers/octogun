@@ -4,7 +4,7 @@ namespace Octokit\Test\Client;
 
 use Octokit\Client;
 
-class GithubTest extends \PHPUnit_Framework_TestCase
+class GithubTest extends \Octokit\Test\OctokitTestCase
 {
     public $client;
     
