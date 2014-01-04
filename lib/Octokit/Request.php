@@ -138,7 +138,7 @@ class Request extends Api
         
         $this->fixture = false;
         
-        $this->handleErrors($response);
+        $this->handleErrors($connection, $response);
         
         return $response;
     }
@@ -165,7 +165,7 @@ class Request extends Api
         return $body;
     }
     
-    public function handleErrors($response)
+    public function handleErrors($connection, $response)
     {
         $exception = null;
         
