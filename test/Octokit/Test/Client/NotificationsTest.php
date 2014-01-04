@@ -6,16 +6,9 @@ use Octokit\Client;
 
 class NotificationsTest extends \Octokit\Test\OctokitTestCase
 {
-    public $client;
-    
     public function setUp()
     {
         $this->client = new Client(array('login' => 'joeyw'));
-    }
-    
-    public function tearDown()
-    {
-        $this->configuration()->reset();
     }
     
     public function notifications()

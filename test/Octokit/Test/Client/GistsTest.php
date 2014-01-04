@@ -6,18 +6,12 @@ use Octokit\Client;
 
 class GistsTest extends \Octokit\Test\OctokitTestCase
 {
-    public $client;
     protected $username;
     
     public function setUp()
     {
         $this->username = 'Oshuma';
         $this->client = new Client(array('login' => $this->username));
-    }
-    
-    public function tearDown()
-    {
-        $this->configuration()->reset();
     }
     
     public function gists()

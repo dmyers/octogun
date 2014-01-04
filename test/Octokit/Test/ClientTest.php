@@ -6,11 +6,6 @@ use Octokit\Client;
 
 class ClientTest extends \Octokit\Test\OctokitTestCase
 {
-    public function setUp()
-    {
-        $this->client = new Client();
-    }
-    
     public function tearDown()
     {
         $this->configuration()->reset();

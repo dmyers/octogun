@@ -2,17 +2,8 @@
 
 namespace Octokit\Test\Client;
 
-use Octokit\Client;
-
 class GithubTest extends \Octokit\Test\OctokitTestCase
 {
-    public $client;
-    
-    public function setUp()
-    {
-        $this->client = new Client();
-    }
-    
     public function tearDown()
     {
         $this->configuration()->reset();

@@ -6,16 +6,9 @@ use Octokit\Client;
 
 class IssuesTest extends \Octokit\Test\OctokitTestCase
 {
-    public $client;
-    
     public function setUp()
     {
         $this->client = new Client(array('login' => 'sferik'));
-    }
-    
-    public function tearDown()
-    {
-        $this->configuration()->reset();
     }
     
     public function issues()
