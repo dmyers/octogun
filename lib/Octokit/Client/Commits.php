@@ -36,9 +36,9 @@ class Commits extends Api
      * 
      * @see http://developer.github.com/v3/repos/commits/#get-a-single-commit
      *
-     * @param string $repo          A GitHub repository.
-     * @param string $sha_or_branch The SHA of the commit to fetch.
-     * @param array  $options       Optional options.
+     * @param string $repo    A GitHub repository.
+     * @param string $sha     The SHA of the commit to fetch.
+     * @param array  $options Optional options.
      *
      * @return array An array representing the commit.
      */
