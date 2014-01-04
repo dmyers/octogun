@@ -62,14 +62,4 @@ class Downloads extends Api
     {
         return $this->request()->booleanFromResponse('delete', 'repos/' . $repo . '/downloads/' . $id, $options);
     }
-    
-    protected function createDownloadResource($repo, $name, $size, array $options = array())
-    {
-        $options = array_merge(array(
-            'name' => $name,
-            'size' => $size,
-        ), $options);
-        
-        return $this->request()->post('repos/' . $repo . '/downloads', $options);
-    }
 }
