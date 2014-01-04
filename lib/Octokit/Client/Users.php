@@ -387,7 +387,7 @@ class Users extends Api
      * 
      * @see http://developer.github.com/v3/users/keys/#delete-a-public-key
      *
-     * @param int   $key_id  Id of the public key to remove.
+     * @param int   $id      Id of the public key to remove.
      * @param array $options Optional options.
      *
      * @return bool True if removal was successful, false otherwise.
