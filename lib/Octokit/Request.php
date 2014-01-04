@@ -204,6 +204,10 @@ class Request extends Api
                 return;
         }
         
+        $exception->setConnection($connection);
+        $exception->setResponse($response);
+        $exception->buildErrorMessage();
+        
         throw $exception;
     }
     
