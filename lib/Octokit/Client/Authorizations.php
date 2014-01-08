@@ -32,7 +32,8 @@ class Authorizations extends Api
      * 
      * @see http://developer.github.com/v3/oauth/#get-a-single-authorization
      *
-     * @param array $options Optional options.
+     * @param string $number  ID of the authorization.
+     * @param array  $options Optional options.
      *
      * @return array A single authorization for the authenticated user.
      */
@@ -68,7 +69,8 @@ class Authorizations extends Api
      * 
      * @see http://developer.github.com/v3/oauth/#update-a-new-authorization
      *
-     * @param array $options Optional options.
+     * @param string $number  ID of the authorization.
+     * @param array  $options Optional options.
      *
      * @return array A single (updated) authorization for the authenticated user.
      */
@@ -87,7 +89,8 @@ class Authorizations extends Api
      * 
      * @see http://developer.github.com/v3/oauth/#delete-an-authorization
      *
-     * @param array $options Optional options.
+     * @param string $number  ID of the authorization.
+     * @param array  $options Optional options.
      *
      * @return bool Success
      */
