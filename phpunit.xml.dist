@@ -2,14 +2,14 @@
 
 <phpunit backupGlobals="false" bootstrap="vendor/autoload.php" colors="true">
     <testsuites>
-        <testsuite name="Octokit Test Suite">
-            <directory suffix="Test.php">./test/Octokit/</directory>
+        <testsuite name="Octogun Test Suite">
+            <directory suffix="Test.php">./test/Octogun/</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory suffix=".php">./lib/Octokit/</directory>
+            <directory suffix=".php">./lib/Octogun/</directory>
         </whitelist>
     </filter>
     

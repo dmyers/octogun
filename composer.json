@@ -1,9 +1,9 @@
 {
-  "name": "dmyers/octokit",
+  "name": "dmyers/octogun",
   "description": "Simple wrapper for the GitHub v3 API",
   "keywords": ["github api", "github"],
   "license": "MIT",
-  "homepage": "http://github.com/dmyers/octokit",
+  "homepage": "http://github.com/dmyers/octogun",
   "authors": [
     {
       "name": "Derek Myers",
@@ -21,8 +21,8 @@
   },
   "autoload": {
     "psr-0": {
-      "Octokit": "lib/",
-      "Octokit\\Test": "test/"
+      "Octogun": "lib/",
+      "Octogun\\Test": "test/"
     }
   }
 }
