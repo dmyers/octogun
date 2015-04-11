@@ -40,9 +40,9 @@ class Statuses extends Api
      */
     public function createStatus($repo, $sha, $state, array $options = array())
     {
-        $options = array_merge($options, array(
+        $options = array_merge(array(
             'state' => $state,
-        ));
+        ), $options);
         
         return $this->request()->post('repos/' . $repo . '/statuses/' . $sha, $options);
     }
