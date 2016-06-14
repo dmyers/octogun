@@ -188,6 +188,9 @@ class Request extends Api
             case 422:
                 $exception = new Exception\UnprocessableEntityException();
                 break;
+            case 451:
+                $exception = new Exception\UnavailableForLegalReasonsException();
+                break;
             case 500:
                 $exception = new Exception\InternalServerErrorException();
                 break;
