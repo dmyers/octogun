@@ -51,10 +51,10 @@ class Users extends Api
     public function user($user = null, array $options = array())
     {
         if (!empty($user)) {
-            return $this->request()->get('users/' . $user);
+            return $this->request()->get('users/' . $user, $options);
         }
         else {
-            return $this->request()->get('user');
+            return $this->request()->get('user', $options);
         }
     }
     
