@@ -2,10 +2,16 @@
 
 namespace Octogun\Exception;
 
-class ErrorException extends \Exception
+class ErrorException extends \RuntimeException
 {
+    protected $statusCode = 0;
     public $connection;
     public $response;
+    
+    public function __construct($message = null, $code = 0, \Exception $previous = null)
+    {
+        parent::__construct($message, $this->statusCode, $previous);
+    }
     
     public function setConnection($connection)
     {
