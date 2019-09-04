@@ -4,9 +4,11 @@ Simple PHP wrapper for the GitHub API. This is an unofficial port of [Octokit.rb
 
 ## Installation
 
-Simply add the following to your composer.json require block:
+Simply install using composer:
 
-	'dmyers/octogun'
+```bash
+$ composer require dmyers/octogun
+```
 
 ### Examples
 
