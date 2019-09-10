@@ -1,5 +1,6 @@
 {
   "name": "dmyers/octogun",
+  "type": "library",
   "description": "Simple wrapper for the GitHub v3 API",
   "keywords": ["github api", "github"],
   "license": "MIT",
