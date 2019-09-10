@@ -24,5 +24,7 @@
       "Octogun": "src/",
       "Octogun\\Test": "test/"
     }
-  }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
