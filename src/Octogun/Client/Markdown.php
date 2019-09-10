@@ -16,7 +16,7 @@ class Markdown extends Api
      *
      * @return string HTML renderization.
      */
-    public function markdown($text, array $options = array())
+    public function markdown($text, array $options = [])
     {
         $options['text'] = $text;
         $options['accept'] = 'application/vnd.github.raw';

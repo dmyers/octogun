@@ -15,7 +15,7 @@ class Events extends Api
      * 
      * @return array A list of all public events from GitHub.
      */
-    public function publicEvents(array $options = array())
+    public function publicEvents(array $options = [])
     {
         return $this->request()->get('events', $options);
     }
@@ -30,7 +30,7 @@ class Events extends Api
      * 
      * @return array A list of all user events.
      */
-    public function userEvents($user, array $options = array())
+    public function userEvents($user, array $options = [])
     {
         return $this->request()->get('users/' . $user . '/events', $options);
     }
@@ -45,7 +45,7 @@ class Events extends Api
      * 
      * @return array A list of public user events.
      */
-    public function userPublicEvents($user, array $options = array())
+    public function userPublicEvents($user, array $options = [])
     {
         return $this->request()->get('users/' . $user . '/events/public', $options);
     }
@@ -60,7 +60,7 @@ class Events extends Api
      * 
      * @return array A list of all user received events.
      */
-    public function receivedEvents($user, array $options = array())
+    public function receivedEvents($user, array $options = [])
     {
         return $this->request()->get('users/' . $user . '/received_events', $options);
     }
@@ -75,7 +75,7 @@ class Events extends Api
      * 
      * @return array A list of public user received events.
      */
-    public function receivedPublicEvents($user, array $options = array())
+    public function receivedPublicEvents($user, array $options = [])
     {
         return $this->request()->get('users/' . $user . '/received_events/public', $options);
     }
@@ -90,7 +90,7 @@ class Events extends Api
      * 
      * @return array A list of events for a repository.
      */
-    public function repositoryEvents($repo, array $options = array())
+    public function repositoryEvents($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/events', $options);
     }
@@ -105,7 +105,7 @@ class Events extends Api
      * 
      * @return array A list of events for a repository's network.
      */
-    public function repositoryNetworkEvents($repo, array $options = array())
+    public function repositoryNetworkEvents($repo, array $options = [])
     {
         return $this->request()->get('networks/' . $repo . '/events', $options);
     }
@@ -122,7 +122,7 @@ class Events extends Api
      * 
      * @return array List of all events from a GitHub organization.
      */
-    public function organizationEvents($org, array $options = array())
+    public function organizationEvents($org, array $options = [])
     {
         $login = $this->configuration()->get('login');
         
@@ -139,7 +139,7 @@ class Events extends Api
      * 
      * @return array List of public events from a GitHub organization.
      */
-    public function organizationPublicEvents($org, array $options = array())
+    public function organizationPublicEvents($org, array $options = [])
     {
         return $this->request()->get('orgs/' . $org . '/events', $options);
     }

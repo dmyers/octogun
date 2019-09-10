@@ -16,7 +16,7 @@ class Authentication extends Api
             );
         }
         
-        return array();
+        return [];
     }
     
     public function authenticated()

@@ -22,7 +22,7 @@ class Downloads extends Api
      *
      * @return array A list of available downloads.
      */
-    public function downloads($repo, array $options = array())
+    public function downloads($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/downloads', $options);
     }
@@ -40,7 +40,7 @@ class Downloads extends Api
      *
      * @return array A single download from the repository.
      */
-    public function download($repo, $id, array $options = array())
+    public function download($repo, $id, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/downloads/' . $id, $options);
     }
@@ -58,7 +58,7 @@ class Downloads extends Api
      *
      * @return bool Status.
      */
-    public function deleteDownload($repo, $id, array $options = array())
+    public function deleteDownload($repo, $id, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'repos/' . $repo . '/downloads/' . $id, $options);
     }

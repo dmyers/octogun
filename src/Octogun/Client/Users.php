@@ -17,7 +17,7 @@ class Users extends Api
      *
      * @return array List of matching users.
      */
-    public function searchUsers($search, array $options = array())
+    public function searchUsers($search, array $options = [])
     {
         $users = $this->request()->get('legacy/user/search/' . $search, $options);
         
@@ -33,7 +33,7 @@ class Users extends Api
      *
      * @return array List of GitHub users.
      */
-    public function allUsers(array $options = array())
+    public function allUsers(array $options = [])
     {
         return $this->request()->get('users', $options);
     }
@@ -48,7 +48,7 @@ class Users extends Api
      *
      * @return array
      */
-    public function user($user = null, array $options = array())
+    public function user($user = null, array $options = [])
     {
         if (!empty($user)) {
             return $this->request()->get('users/' . $user, $options);
@@ -70,7 +70,7 @@ class Users extends Api
      *
      * @return array Array holding the access token.
      */
-    public function accessToken($code, $app_id = null, $app_secret = null, array $options = array())
+    public function accessToken($code, $app_id = null, $app_secret = null, array $options = [])
     {
         if (empty($app_id)) {
             $app_id = $this->configuration()->get('client_id');
@@ -98,7 +98,7 @@ class Users extends Api
      * 
      * @return bool True if credentials are valid.
      */
-    public function validateCredentials(array $options = array())
+    public function validateCredentials(array $options = [])
     {
         $this->configuration()->reset();
         
@@ -124,7 +124,7 @@ class Users extends Api
      *
      * @return array
      */
-    public function updateUser(array $options = array())
+    public function updateUser(array $options = [])
     {
         return $this->request()->patch('user', $options);
     }
@@ -139,7 +139,7 @@ class Users extends Api
      *
      * @return array List of representing users followers.
      */
-    public function followers($user = null, array $options = array())
+    public function followers($user = null, array $options = [])
     {
         if (empty($user)) {
             $user = $this->configuration()->get('login');
@@ -158,7 +158,7 @@ class Users extends Api
      *
      * @return array List of representing users a user is following.
      */
-    public function following($user = null, array $options = array())
+    public function following($user = null, array $options = [])
     {
         if (empty($user)) {
             $user = $this->configuration()->get('login');
@@ -206,7 +206,7 @@ class Users extends Api
      *
      * @return bool True if follow was successful, false otherwise.
      */
-    public function follow($user, array $options = array())
+    public function follow($user, array $options = [])
     {
         return $this->request()->booleanFromResponse('put', 'user/following/' . $user, $options);
     }
@@ -223,7 +223,7 @@ class Users extends Api
      *
      * @return bool True if unfollow was successful, false otherwise.
      */
-    public function unfollow($user, array $options = array())
+    public function unfollow($user, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'user/following/' . $user, $options);
     }
@@ -238,7 +238,7 @@ class Users extends Api
      *
      * @return array List of representing repositories starred by user.
      */
-    public function starred($user = null, array $options = array())
+    public function starred($user = null, array $options = [])
     {
         if (empty($user)) {
             $user = $this->configuration()->get('login');
@@ -260,7 +260,7 @@ class Users extends Api
      *
      * @return bool True if you are following the repo, false otherwise.
      */
-    public function stars($user, $repo, array $options = array())
+    public function stars($user, $repo, array $options = [])
     {
         return $this->request()->booleanFromResponse('get', 'user/starred/' . $user . '/' . $repo, $options);
     }
@@ -277,7 +277,7 @@ class Users extends Api
      *
      * @return array List of representing repositories watched by user.
      */
-    public function watched($user = null, array $options = array())
+    public function watched($user = null, array $options = [])
     {
         if (empty($user)) {
             $user = $this->configuration()->get('login');
@@ -302,7 +302,7 @@ class Users extends Api
      *
      * @return array Array representing the key.
      */
-    public function key($key_id, array $options = array())
+    public function key($key_id, array $options = [])
     {
         return $this->request()->get('user/keys/' . $key_id, $options);
     }
@@ -318,7 +318,7 @@ class Users extends Api
      *
      * @return array List of representing public keys.
      */
-    public function keys(array $options = array())
+    public function keys(array $options = [])
     {
         return $this->request()->get('user/keys', $options);
     }
@@ -335,7 +335,7 @@ class Users extends Api
      *
      * @return array List of representing public keys.
      */
-    public function userKeys($user, array $options = array())
+    public function userKeys($user, array $options = [])
     {
         return $this->request()->get('users/' . $user . '/keys', $options);
     }
@@ -353,7 +353,7 @@ class Users extends Api
      * 
      * @return array Array representing the newly added public key.
      */
-    public function addKey($title, $key, array $options = array())
+    public function addKey($title, $key, array $options = [])
     {
         $options = array_merge(array(
             'title' => $title,
@@ -375,7 +375,7 @@ class Users extends Api
      *
      * @return array Array representing the updated public key.
      */
-    public function updateKey($key_id, array $options = array())
+    public function updateKey($key_id, array $options = [])
     {
         return $this->request()->patch('user/keys/' . $key_id, $options);
     }
@@ -392,7 +392,7 @@ class Users extends Api
      *
      * @return bool True if removal was successful, false otherwise.
      */
-    public function removeKey($id, array $options = array())
+    public function removeKey($id, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'user/keys/' . $id, $options);
     }
@@ -406,7 +406,7 @@ class Users extends Api
      *
      * @return array List of email addresses.
      */
-    public function emails(array $options = array())
+    public function emails(array $options = [])
     {
         return $this->request()->get('user/emails', $options);
     }
@@ -423,7 +423,7 @@ class Users extends Api
      * 
      * @return array List of all email addresses of the user.
      */
-    public function addEmail($email, array $options = array())
+    public function addEmail($email, array $options = [])
     {
         $options = array_merge(array(
             'email' => $email,
@@ -444,7 +444,7 @@ class Users extends Api
      *
      * @return bool True if removal was successful, false otherwise.
      */
-    public function removeEmail($email, array $options = array())
+    public function removeEmail($email, array $options = [])
     {
         $options = array_merge(array(
             'email' => $email,
@@ -463,7 +463,7 @@ class Users extends Api
      *
      * @return array List of repositories.
      */
-    public function subscriptions($user = null, array $options = array())
+    public function subscriptions($user = null, array $options = [])
     {
         if (empty($user)) {
             $user = $this->configuration()->get('login');

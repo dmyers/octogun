@@ -40,7 +40,7 @@ class Repositories extends Api
      *
      * @return array List of repositories found.
      */
-    public function searchRepositories($q, array $options = array())
+    public function searchRepositories($q, array $options = [])
     {
         $repos = $this->request()->get('legacy/repos/search/' . $q, $options);
         
@@ -57,7 +57,7 @@ class Repositories extends Api
      *
      * @return array Repository information.
      */
-    public function repository($repo, array $options = array())
+    public function repository($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo, $options);
     }
@@ -72,7 +72,7 @@ class Repositories extends Api
      *
      * @return array Repository information.
      */
-    public function editRepository($repo, array $options = array())
+    public function editRepository($repo, array $options = [])
     {
         return $this->request()->patch('repos/' . $repo, $options);
     }
@@ -90,7 +90,7 @@ class Repositories extends Api
      *
      * @return array List of repositories.
      */
-    public function repositories($username = null, array $options = array())
+    public function repositories($username = null, array $options = [])
     {
         if (empty($username)) {
             return $this->request()->get('user/repos', $options);
@@ -112,7 +112,7 @@ class Repositories extends Api
      *
      * @return array List of repositories.
      */
-    public function allRepositories(array $options = array())
+    public function allRepositories(array $options = [])
     {
         return $this->request()->get('repositories', $options);
     }
@@ -127,7 +127,7 @@ class Repositories extends Api
      *
      * @return bool True if successfully starred.
      */
-    public function star($repo, array $options = array())
+    public function star($repo, array $options = [])
     {
         return $this->request()->booleanFromResponse('put', 'user/starred/' . $repo, $options);
     }
@@ -142,7 +142,7 @@ class Repositories extends Api
      *
      * @return bool True if successfully unstarred.
      */
-    public function unstar($repo, array $options = array())
+    public function unstar($repo, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'user/starred/' . $repo, $options);
     }
@@ -159,7 +159,7 @@ class Repositories extends Api
      *
      * @return bool True if successfully watched.
      */
-    public function watch($repo, array $options = array())
+    public function watch($repo, array $options = [])
     {
         return $this->request()->booleanFromResponse('put', 'user/watched/' . $repo, $options);
     }
@@ -176,7 +176,7 @@ class Repositories extends Api
      *
      * @return bool True if successfully unwatched.
      */
-    public function unwatch($repo, array $options = array())
+    public function unwatch($repo, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'user/watched/' . $repo, $options);
     }
@@ -191,7 +191,7 @@ class Repositories extends Api
      *
      * @return array Repository info for the new fork.
      */
-    public function fork($repo, array $options = array())
+    public function fork($repo, array $options = [])
     {
         return $this->request()->post('repos/' . $repo . '/forks', $options);
     }
@@ -206,7 +206,7 @@ class Repositories extends Api
      *
      * @return array Repository info for the new repository.
      */
-    public function createRepository($name, array $options = array())
+    public function createRepository($name, array $options = [])
     {
         $organization = isset($options['organization']) ? $options['organization'] : null;
         
@@ -234,7 +234,7 @@ class Repositories extends Api
      *
      * @return bool True if successfully deleted.
      */
-    public function deleteRepository($repo, array $options = array())
+    public function deleteRepository($repo, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'repo/' . $repo, $options);
     }
@@ -247,7 +247,7 @@ class Repositories extends Api
      * 
      * @return array Updated repository info.
      */
-    public function setPrivate($repo, array $options = array())
+    public function setPrivate($repo, array $options = [])
     {
         $options = array_merge(array(
             'private' => true,
@@ -264,7 +264,7 @@ class Repositories extends Api
      * 
      * @return array Updated repository info.
      */
-    public function setPublic($repo, array $options = array())
+    public function setPublic($repo, array $options = [])
     {
         $options = array_merge(array(
             'private' => false,
@@ -285,7 +285,7 @@ class Repositories extends Api
      *
      * @return array Array of representing deploy keys.
      */
-    public function deployKeys($repo, array $options = array())
+    public function deployKeys($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/keys', $options);
     }
@@ -304,7 +304,7 @@ class Repositories extends Api
      * 
      * @return array Array representing newly added key.
      */
-    public function addDeployKey($repo, $title, $key, array $options = array())
+    public function addDeployKey($repo, $title, $key, array $options = [])
     {
         $options = array_merge(array(
             'title' => $title,
@@ -325,7 +325,7 @@ class Repositories extends Api
      *
      * @return bool True if key removed, false otherwise.
      */
-    public function removeDeployKey($repo, $id, array $options = array())
+    public function removeDeployKey($repo, $id, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'repos/' . $repo . '/keys/' . $id, $options);
     }
@@ -342,7 +342,7 @@ class Repositories extends Api
      *
      * @return array Array of representing collaborating users.
      */
-    public function collaborators($repo, array $options = array())
+    public function collaborators($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/collaborators', $options);
     }
@@ -360,7 +360,7 @@ class Repositories extends Api
      *
      * @return bool True if collaborator added, false otherwise.
      */
-    public function addCollaborator($repo, $collaborator, array $options = array())
+    public function addCollaborator($repo, $collaborator, array $options = [])
     {
         return $this->request()->booleanFromResponse('put', 'repos/' . $repo . '/collaborators/' . $collaborator, $options);
     }
@@ -378,7 +378,7 @@ class Repositories extends Api
      *
      * @return bool True if collaborator removed, false otherwise.
      */
-    public function removeCollaborator($repo, $collaborator, array $options = array())
+    public function removeCollaborator($repo, $collaborator, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'repos/' . $repo . '/collaborators/' . $collaborator, $options);
     }
@@ -395,7 +395,7 @@ class Repositories extends Api
      *
      * @return array Array of representing teams.
      */
-    public function repositoryTeams($repo, array $options = array())
+    public function repositoryTeams($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/teams', $options);
     }
@@ -413,7 +413,7 @@ class Repositories extends Api
      *
      * @return bool Array of representing users.
      */
-    public function contributors($repo, $anon = false, array $options = array())
+    public function contributors($repo, $anon = false, array $options = [])
     {
         $options = array_merge(array(
             'anon' => $anon,
@@ -434,7 +434,7 @@ class Repositories extends Api
      *
      * @return array Array of representing users.
      */
-    public function stargazers($repo, array $options = array())
+    public function stargazers($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/stargazers', $options);
     }
@@ -453,7 +453,7 @@ class Repositories extends Api
      *
      * @return array Array of representing users.
      */
-    public function watchers($repo, array $options = array())
+    public function watchers($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/watchers', $options);
     }
@@ -470,7 +470,7 @@ class Repositories extends Api
      *
      * @return array Array of representing repos.
      */
-    public function forks($repo, array $options = array())
+    public function forks($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/forks', $options);
     }
@@ -487,7 +487,7 @@ class Repositories extends Api
      *
      * @return array Array of representing languages.
      */
-    public function languages($repo, array $options = array())
+    public function languages($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/languages', $options);
     }
@@ -504,7 +504,7 @@ class Repositories extends Api
      *
      * @return array Array of representing tags.
      */
-    public function tags($repo, array $options = array())
+    public function tags($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/tags', $options);
     }
@@ -521,7 +521,7 @@ class Repositories extends Api
      *
      * @return array Array of representing branches.
      */
-    public function branches($repo, array $options = array())
+    public function branches($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/branches', $options);
     }
@@ -537,7 +537,7 @@ class Repositories extends Api
      *
      * @return array The branch requested, if it exists.
      */
-    public function branch($repo, $branch, array $options = array())
+    public function branch($repo, $branch, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/branch/' . $branch, $options);
     }
@@ -554,7 +554,7 @@ class Repositories extends Api
      *
      * @return array Array of representing hooks.
      */
-    public function hooks($repo, array $options = array())
+    public function hooks($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/hooks', $options);
     }
@@ -572,7 +572,7 @@ class Repositories extends Api
      *
      * @return array Array representing hook.
      */
-    public function hook($repo, $id, array $options = array())
+    public function hook($repo, $id, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/hooks/' . $id, $options);
     }
@@ -592,7 +592,7 @@ class Repositories extends Api
      *
      * @return array Hook info for the new hook.
      */
-    public function createHook($repo, $name, array $config, array $options = array())
+    public function createHook($repo, $name, array $config, array $options = [])
     {
         $options = array_merge(array(
             'name'   => $name,
@@ -620,7 +620,7 @@ class Repositories extends Api
      *
      * @return array Hook info for the updated hook.
      */
-    public function editHook($repo, $id, $name, array $config, array $options = array())
+    public function editHook($repo, $id, $name, array $config, array $options = [])
     {
         $options = array_merge(array(
             'name'   => $name,
@@ -645,7 +645,7 @@ class Repositories extends Api
      *
      * @return bool True if hook removed, false otherwise.
      */
-    public function removeHook($repo, $id, array $options = array())
+    public function removeHook($repo, $id, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'repos/' . $repo . '/hooks/' . $id, $options);
     }
@@ -663,7 +663,7 @@ class Repositories extends Api
      *
      * @return null
      */
-    public function testHook($repo, $id, array $options = array())
+    public function testHook($repo, $id, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'repos/' . $repo . '/hooks/' . $id . '/tests', $options);
     }
@@ -678,7 +678,7 @@ class Repositories extends Api
      *
      * @return array Array of all Issue Events for this Repository.
      */
-    public function repositoryIssueEvents($repo, array $options = array())
+    public function repositoryIssueEvents($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/issues/events', $options);
     }
@@ -695,7 +695,7 @@ class Repositories extends Api
      *
      * @return array Array of representing users.
      */
-    public function repositoryAssignees($repo, array $options = array())
+    public function repositoryAssignees($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/assignees', $options);
     }
@@ -711,7 +711,7 @@ class Repositories extends Api
      *
      * @return bool True if assignable on project, false otherwise.
      */
-    public function checkAssignee($repo, $assignee, array $options = array())
+    public function checkAssignee($repo, $assignee, array $options = [])
     {
         return $this->request()->booleanFromResponse('get', 'repos/' . $repo . '/assignees/' . $assignee, $options);
     }
@@ -726,7 +726,7 @@ class Repositories extends Api
      *
      * @return array Array of users watching.
      */
-    public function subscribers($repo, array $options = array())
+    public function subscribers($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/subscribers', $options);
     }
@@ -741,7 +741,7 @@ class Repositories extends Api
      *
      * @return array Repository subscription.
      */
-    public function subscription($repo, array $options = array())
+    public function subscription($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/subscription', $options);
     }
@@ -756,7 +756,7 @@ class Repositories extends Api
      *
      * @return array Updated repository subscription.
      */
-    public function updateSubscription($repo, array $options = array())
+    public function updateSubscription($repo, array $options = [])
     {
         return $this->request()->put('repos/' . $repo . '/subscription', $options);
     }
@@ -771,7 +771,7 @@ class Repositories extends Api
      *
      * @return bool True if subscription deleted, false otherwise.
      */
-    public function deleteSubscription($repo, array $options = array())
+    public function deleteSubscription($repo, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'repos/' . $repo . '/subscription', $options);
     }

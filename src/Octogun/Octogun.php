@@ -6,7 +6,7 @@ class Octogun
 {
     const VERSION = '1.0';
     
-    public function __construct(array $options = array())
+    public function __construct(array $options = [])
     {
         return new Client($options);
     }

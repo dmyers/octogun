@@ -27,7 +27,7 @@ class Refs extends Api
      *
      * @return array A list of references matching the repo and the namespace.
      */
-    public function refs($repo, $namespace = '', array $options = array())
+    public function refs($repo, $namespace = '', array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/git/refs/' . $namespace, $options);
     }
@@ -43,7 +43,7 @@ class Refs extends Api
      *
      * @return array The reference matching the given repo and the ref id.
      */
-    public function ref($repo, $ref, array $options = array())
+    public function ref($repo, $ref, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/git/refs/' . $ref, $options);
     }
@@ -60,7 +60,7 @@ class Refs extends Api
      *
      * @return array The list of references, already containing the new one.
      */
-    public function createRef($repo, $ref, $sha, array $options = array())
+    public function createRef($repo, $ref, $sha, array $options = [])
     {
         $options = array_merge(array(
             'ref' => 'refs/' . $ref,
@@ -83,7 +83,7 @@ class Refs extends Api
      *
      * @return array The list of references updated.
      */
-    public function updateRef($repo, $ref, $sha, $force = true, array $options = array())
+    public function updateRef($repo, $ref, $sha, $force = true, array $options = [])
     {
         $options = array_merge(array(
             'sha'   => $sha,
@@ -104,7 +104,7 @@ class Refs extends Api
      *
      * @return bool Success.
      */
-    public function deleteRef($repo, $ref, array $options = array())
+    public function deleteRef($repo, $ref, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'repos/' . $repo . '/git/refs/' . $ref, $options);
     }

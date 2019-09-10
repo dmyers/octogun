@@ -15,7 +15,7 @@ class Github extends Api
      * 
      * @return array Array with meta information.
      */
-    public function githubMeta(array $options = array())
+    public function githubMeta(array $options = [])
     {
         return $this->request()->get('meta', $options);
     }

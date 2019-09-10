@@ -20,7 +20,7 @@ class Gists extends Api
      *
      * @return array A list of gists.
      */
-    public function gists($username = null, array $options = array())
+    public function gists($username = null, array $options = [])
     {
         if (empty($username)) {
             return $this->request()->get('gists', $options);
@@ -39,7 +39,7 @@ class Gists extends Api
      *
      * @return array A list of gists.
      */
-    public function publicGists(array $options = array())
+    public function publicGists(array $options = [])
     {
         return $this->request()->get('gists/public', $options);
     }
@@ -53,7 +53,7 @@ class Gists extends Api
      *
      * @return array A list of gists.
      */
-    public function starredGists(array $options = array())
+    public function starredGists(array $options = [])
     {
         return $this->request()->get('gists/starred', $options);
     }
@@ -68,7 +68,7 @@ class Gists extends Api
      *
      * @return array Gist information.
      */
-    public function gist($gist, array $options = array())
+    public function gist($gist, array $options = [])
     {
         return $this->request()->get('gists/' . $gist, $options);
     }
@@ -82,7 +82,7 @@ class Gists extends Api
      *
      * @return array Newly created gist info.
      */
-    public function createGist(array $options = array())
+    public function createGist(array $options = [])
     {
         return $this->request()->post('gists', $options);
     }
@@ -97,7 +97,7 @@ class Gists extends Api
      *
      * @return array Updated gist info.
      */
-    public function editGist($gist, array $options = array())
+    public function editGist($gist, array $options = [])
     {
         return $this->request()->patch('gists/' . $gist, $options);
     }
@@ -112,7 +112,7 @@ class Gists extends Api
      *
      * @return bool Indicates if gist is starred successfully.
      */
-    public function starGist($gist, array $options = array())
+    public function starGist($gist, array $options = [])
     {
         return $this->request()->booleanFromResponse('put', 'gists/' . $gist . '/star', $options);
     }
@@ -127,7 +127,7 @@ class Gists extends Api
      *
      * @return bool Indicates if gist is unstarred successfully.
      */
-    public function unstarGist($gist, array $options = array())
+    public function unstarGist($gist, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'gists/' . $gist . '/star', $options);
     }
@@ -142,7 +142,7 @@ class Gists extends Api
      *
      * @return bool Indicates if gist is starred.
      */
-    public function gistStarred($gist, array $options = array())
+    public function gistStarred($gist, array $options = [])
     {
         return $this->request()->booleanFromResponse('get', 'gists/' . $gist . '/star', $options);
     }
@@ -157,7 +157,7 @@ class Gists extends Api
      *
      * @return array Data for the new gist.
      */
-    public function forkGist($gist, array $options = array())
+    public function forkGist($gist, array $options = [])
     {
         return $this->request()->post('gists/' . $gist . '/forks', $options);
     }
@@ -172,7 +172,7 @@ class Gists extends Api
      *
      * @return bool Indicating success of deletion.
      */
-    public function deleteGist($gist, array $options = array())
+    public function deleteGist($gist, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'gists/' . $gist, $options);
     }
@@ -187,7 +187,7 @@ class Gists extends Api
      *
      * @return array Array of representing comments.
      */
-    public function gistComments($gist_id, array $options = array())
+    public function gistComments($gist_id, array $options = [])
     {
         return $this->request()->get('gists/' . $gist_id . '/comments', $options);
     }
@@ -203,7 +203,7 @@ class Gists extends Api
      *
      * @return array Array representing gist comment.
      */
-    public function gistComment($gist_id, $gist_comment_id, array $options = array())
+    public function gistComment($gist_id, $gist_comment_id, array $options = [])
     {
         return $this->request()->get('gists/' . $gist_id . '/comments/' . $gist_comment_id, $options);
     }
@@ -221,7 +221,7 @@ class Gists extends Api
      *
      * @return array Array representing the new comment.
      */
-    public function createGistComment($gist_id, $comment, array $options = array())
+    public function createGistComment($gist_id, $comment, array $options = [])
     {
         $options = array_merge(array(
             'body' => $comment,
@@ -244,7 +244,7 @@ class Gists extends Api
      *
      * @return array Array representing the updated comment.
      */
-    public function updateGistComment($gist_id, $gist_comment_id, $comment, array $options = array())
+    public function updateGistComment($gist_id, $gist_comment_id, $comment, array $options = [])
     {
         $options = array_merge(array(
             'body' => $comment,
@@ -266,7 +266,7 @@ class Gists extends Api
      *
      * @return bool True if comment deleted, false otherwise.
      */
-    public function deleteGistComment($gist_id, $gist_comment_id, array $options = array())
+    public function deleteGistComment($gist_id, $gist_comment_id, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'gists/' . $gist_id . '/comments/' . $gist_comment_id, $options);
     }

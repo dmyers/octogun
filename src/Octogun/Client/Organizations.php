@@ -34,7 +34,7 @@ class Organizations extends Api
      *
      * @return array Array representing GitHub organization.
      */
-    public function organization($org, array $options = array())
+    public function organization($org, array $options = [])
     {
         return $this->request()->get('orgs/' . $org, $options);
     }
@@ -52,7 +52,7 @@ class Organizations extends Api
      *
      * @return array Array representing GitHub organization.
      */
-    public function updateOrganization($org, $values, array $options = array())
+    public function updateOrganization($org, $values, array $options = [])
     {
         $options = array_merge(array(
             'organization' => $values,
@@ -77,7 +77,7 @@ class Organizations extends Api
      *
      * @return array Array of representing organizations.
      */
-    public function organizations($user = null, array $options = array())
+    public function organizations($user = null, array $options = [])
     {
         if (!empty($user)) {
             return $this->request()->get('users/' . $user . '/orgs');
@@ -100,7 +100,7 @@ class Organizations extends Api
      *
      * @return array List of repositories.
      */
-    public function organizationRepositories($org, array $options = array())
+    public function organizationRepositories($org, array $options = [])
     {
         return $this->request()->get('orgs/' . $org . '/repos', $options);
     }
@@ -119,7 +119,7 @@ class Organizations extends Api
      *
      * @return array Array of representing users.
      */
-    public function organizationMembers($org, array $options = array())
+    public function organizationMembers($org, array $options = [])
     {
         return $this->request()->get('orgs/' . $org . '/members', $options);
     }
@@ -135,7 +135,7 @@ class Organizations extends Api
      *
      * @return bool Is a member?
      */
-    public function organizationMember($org, $user, array $options = array())
+    public function organizationMember($org, $user, array $options = [])
     {
         return $this->request()->booleanFromResponse('get', 'orgs/' . $org . '/members/' . $user, $options);
     }
@@ -151,7 +151,7 @@ class Organizations extends Api
      *
      * @return bool Is a public member?
      */
-    public function organizationPublicMember($org, $user, array $options = array())
+    public function organizationPublicMember($org, $user, array $options = [])
     {
         return $this->request()->booleanFromResponse('get', 'orgs/' . $org . '/public_members/' . $user, $options);
     }
@@ -168,7 +168,7 @@ class Organizations extends Api
      *
      * @return array Array of representing teams.
      */
-    public function organizationTeams($org, array $options = array())
+    public function organizationTeams($org, array $options = [])
     {
         return $this->request()->get('orgs/' . $org . '/teams', $options);
     }
@@ -185,7 +185,7 @@ class Organizations extends Api
      *
      * @return array Array representing new team.
      */
-    public function createTeam($org, array $options = array())
+    public function createTeam($org, array $options = [])
     {
         return $this->request()->post('orgs/' . $org . '/teams', $options);
     }
@@ -202,7 +202,7 @@ class Organizations extends Api
      *
      * @return array Array representing team.
      */
-    public function team($team_id, array $options = array())
+    public function team($team_id, array $options = [])
     {
         return $this->request()->get('teams/' . $team_id, $options);
     }
@@ -219,7 +219,7 @@ class Organizations extends Api
      *
      * @return array Array representing updated team.
      */
-    public function updateTeam($team_id, array $options = array())
+    public function updateTeam($team_id, array $options = [])
     {
         return $this->request()->patch('teams/' . $team_id, $options);
     }
@@ -236,7 +236,7 @@ class Organizations extends Api
      *
      * @return bool True if deletion successful, false otherwise.
      */
-    public function deleteTeam($team_id, array $options = array())
+    public function deleteTeam($team_id, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'teams/' . $team_id, $options);
     }
@@ -253,7 +253,7 @@ class Organizations extends Api
      *
      * @return array Array of representing users.
      */
-    public function teamMembers($team_id, array $options = array())
+    public function teamMembers($team_id, array $options = [])
     {
         return $this->request()->get('teams/' . $team_id . '/members', $options);
     }
@@ -272,7 +272,7 @@ class Organizations extends Api
      * 
      * @return bool True on successful addition, false otherwise.
      */
-    public function addTeamMember($team_id, $user, array $options = array())
+    public function addTeamMember($team_id, $user, array $options = [])
     {
         $options = array_merge(array(
             'name' => $user,
@@ -295,7 +295,7 @@ class Organizations extends Api
      *
      * @return bool True if user removed, false otherwise.
      */
-    public function removeTeamMember($team_id, $user, array $options = array())
+    public function removeTeamMember($team_id, $user, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'teams/' . $team_id . '/members/' . $user, $options);
     }
@@ -314,7 +314,7 @@ class Organizations extends Api
      *
      * @return bool Is a member?
      */
-    public function teamMember($team_id, $user, array $options = array())
+    public function teamMember($team_id, $user, array $options = [])
     {
         return $this->request()->booleanFromResponse('get', 'teams/' . $team_id . '/members/' . $user, $options);
     }
@@ -331,7 +331,7 @@ class Organizations extends Api
      *
      * @return array Array of representing repositories.
      */
-    public function teamRepositories($team_id, array $options = array())
+    public function teamRepositories($team_id, array $options = [])
     {
         return $this->request()->get('teams/' . $team_id . '/repos', $options);
     }
@@ -351,7 +351,7 @@ class Organizations extends Api
      * 
      * @return bool True if successful, false otherwise.
      */
-    public function addTeamRepository($team_id, $repo, array $options = array())
+    public function addTeamRepository($team_id, $repo, array $options = [])
     {
         $options = array_merge(array(
             'name' => $repo,
@@ -375,7 +375,7 @@ class Organizations extends Api
      *
      * @return bool Return true if repo removed from team, false otherwise.
      */
-    public function removeTeamRepository($team_id, $repo, array $options = array())
+    public function removeTeamRepository($team_id, $repo, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'teams/' . $team_id . '/repos/' . $repo, $options);
     }
@@ -393,7 +393,7 @@ class Organizations extends Api
      *
      * @return bool True if removal is successful, false otherwise.
      */
-    public function removeOrganizationMember($org, $user, array $options = array())
+    public function removeOrganizationMember($org, $user, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'orgs/' . $org . '/members/' . $user, $options);
     }
@@ -411,7 +411,7 @@ class Organizations extends Api
      *
      * @return bool True if publicization successful, false otherwise.
      */
-    public function publicizeMembership($org, $user, array $options = array())
+    public function publicizeMembership($org, $user, array $options = [])
     {
         return $this->request()->booleanFromResponse('put', 'orgs/' . $org . '/public_members/' . $user, $options);
     }
@@ -429,7 +429,7 @@ class Organizations extends Api
      *
      * @return bool True of unpublicization successful, false otherwise.
      */
-    public function unpublicizeMembership($org, $user, array $options = array())
+    public function unpublicizeMembership($org, $user, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'orgs/' . $org . '/public_members/' . $user, $options);
     }

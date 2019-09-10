@@ -39,7 +39,7 @@ class Pulls extends Api
      *
      * @return array Array of pulls.
      */
-    public function pullRequests($repo, $state = 'open', array $options = array())
+    public function pullRequests($repo, $state = 'open', array $options = [])
     {
         $options = array_merge(array(
             'state' => $state,
@@ -59,7 +59,7 @@ class Pulls extends Api
      *
      * @return array Pull request info.
      */
-    public function pullRequest($repo, $number, array $options = array())
+    public function pullRequest($repo, $number, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/pulls/' . $number, $options);
     }
@@ -81,7 +81,7 @@ class Pulls extends Api
      *
      * @return array The newly created pull request.
      */
-    public function createPullRequest($repo, $base, $head, $title, $body, array $options = array())
+    public function createPullRequest($repo, $base, $head, $title, $body, array $options = [])
     {
         $options = array_merge(array(
             'base'  => $base,
@@ -109,7 +109,7 @@ class Pulls extends Api
      *
      * @return array The newly created pull request.
      */
-    public function createPullRequestForIssue($repo, $base, $head, $issue, array $options = array())
+    public function createPullRequestForIssue($repo, $base, $head, $issue, array $options = [])
     {
         $options = array_merge(array(
             'base'  => $base,
@@ -134,7 +134,7 @@ class Pulls extends Api
      *
      * @return array Array representing updated pull request.
      */
-    public function updatePullRequest($repo, $id, $title = null, $body = null, $state = null, array $options = array())
+    public function updatePullRequest($repo, $id, $title = null, $body = null, $state = null, array $options = [])
     {
         $options = array_merge(array(
             'title' => $title,
@@ -162,7 +162,7 @@ class Pulls extends Api
      *
      * @return array List of commits.
      */
-    public function pullRequestCommits($repo, $number, array $options = array())
+    public function pullRequestCommits($repo, $number, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/pulls/' . $number . '/commits', $options);
     }
@@ -179,7 +179,7 @@ class Pulls extends Api
      *
      * @return array  List of pull request review comments.
      */
-    public function pullRequestsComments($repo, array $options = array())
+    public function pullRequestsComments($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/pulls/comments', $options);
     }
@@ -195,7 +195,7 @@ class Pulls extends Api
      *
      * @return array List of comments.
      */
-    public function pullRequestComments($repo, $number, array $options = array())
+    public function pullRequestComments($repo, $number, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/pulls/' . $number . '/comments', $options);
     }
@@ -211,7 +211,7 @@ class Pulls extends Api
      *
      * @return array Array representing the comment.
      */
-    public function pullRequestComment($repo, $comment_id, array $options = array())
+    public function pullRequestComment($repo, $comment_id, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/pulls/comments/' . $comment_id, $options);
     }
@@ -231,7 +231,7 @@ class Pulls extends Api
      *
      * @return array Array representing the new comment.
      */
-    public function createPullRequestComment($repo, $pull_id, $body, $commit_id, $path, $position, array $options = array())
+    public function createPullRequestComment($repo, $pull_id, $body, $commit_id, $path, $position, array $options = [])
     {
         $options = array_merge(array(
             'body'      => $body,
@@ -256,7 +256,7 @@ class Pulls extends Api
      *
      * @return array Array representing new comment.
      */
-    public function createPullRequestCommentReply($repo, $pull_id, $body, $comment_id, array $options = array())
+    public function createPullRequestCommentReply($repo, $pull_id, $body, $comment_id, array $options = [])
     {
         $options = array_merge(array(
             'body'        => $body,
@@ -278,7 +278,7 @@ class Pulls extends Api
      *
      * @return array Array representing the updated comment.
      */
-    public function updatePullRequestComment($repo, $comment_id, $body, array $options = array())
+    public function updatePullRequestComment($repo, $comment_id, $body, array $options = [])
     {
         $options = array_merge(array(
             'body' => $body,
@@ -298,7 +298,7 @@ class Pulls extends Api
      *
      * @return bool True if deleted, false otherwise.
      */
-    public function deletePullRequestComment($repo, $comment_id, array $options = array())
+    public function deletePullRequestComment($repo, $comment_id, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'repos/' . $repo . '/pulls/comments/' . $comment_id, $options);
     }
@@ -314,7 +314,7 @@ class Pulls extends Api
      *
      * @return array List of files.
      */
-    public function pullRequestFiles($repo, $number, array $options = array())
+    public function pullRequestFiles($repo, $number, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/pulls/' . $number . '/files', $options);
     }
@@ -331,7 +331,7 @@ class Pulls extends Api
      *
      * @return array Merge commit info if successful.
      */
-    public function mergePullRequest($repo, $number, $commit_message = '', array $options = array())
+    public function mergePullRequest($repo, $number, $commit_message = '', array $options = [])
     {
         $options = array_merge(array(
             'commit_message' => $commit_message,
@@ -351,7 +351,7 @@ class Pulls extends Api
      *
      * @return bool True if the pull request has been merged.
      */
-    public function pullMerged($repo, $number, array $options = array())
+    public function pullMerged($repo, $number, array $options = [])
     {
         return $this->request()->booleanFromResponse('get', 'repos/' . $repo . '/pulls/' . $number . '/merge', $options);
     }

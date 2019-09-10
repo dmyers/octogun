@@ -27,7 +27,7 @@ class Contents extends Api
      * 
      * @return array The detail of the readme.
      */
-    public function readme($repo, array $options = array())
+    public function readme($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/readme', $options);
     }
@@ -42,7 +42,7 @@ class Contents extends Api
      * 
      * @return array The contents of a file or list of the files in the folder.
      */
-    public function contents($repo, array $options = array())
+    public function contents($repo, array $options = [])
     {
         $repo_path = $options['path'];
         
@@ -66,7 +66,7 @@ class Contents extends Api
     {
         $args = func_get_args();
         $options = $args[count($args) - 1];
-        $options = is_array($options) ? $options : array();
+        $options = is_array($options) ? $options : [];
         $repo = $args[0];
         $path = $args[1];
         $message = $args[2];
@@ -100,7 +100,7 @@ class Contents extends Api
     {
         $args = func_get_args();
         $options = $args[count($args) - 1];
-        $options = is_array($options) ? $options : array();
+        $options = is_array($options) ? $options : [];
         $repo = $args[0];
         $path = $args[1];
         $message = $args[2];
@@ -127,7 +127,7 @@ class Contents extends Api
      * 
      * @return array The commit info for the delete
      */
-    public function deleteContents($repo, $path, $message, $sha, array $options = array())
+    public function deleteContents($repo, $path, $message, $sha, array $options = [])
     {
         $options['message'] = $message;
         $options['sha'] = $sha;
@@ -145,7 +145,7 @@ class Contents extends Api
      * 
      * @return string Location of the download.
      */
-    public function archiveLink($repo, array $options = array())
+    public function archiveLink($repo, array $options = [])
     {
         $repo_ref = $options['ref'];
         $format = isset($options['format']) ? $options['format'] : 'tarball';

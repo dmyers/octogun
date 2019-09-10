@@ -21,7 +21,7 @@ class Milestones extends Api
      *
      * @return array A list of milestones for a repository.
      */
-    public function listMilestones($repository, array $options = array())
+    public function listMilestones($repository, array $options = [])
     {
         return $this->request()->get('repos/' . $repository . '/milestones', $options);
     }
@@ -37,7 +37,7 @@ class Milestones extends Api
      *
      * @return array A single milestone from a repository.
      */
-    public function milestone($repository, $number, array $options = array())
+    public function milestone($repository, $number, array $options = [])
     {
         return $this->request()->get('repos/' . $repository . '/milestones/' . $number, $options);
     }
@@ -53,7 +53,7 @@ class Milestones extends Api
      *
      * @return array A single milestone array.
      */
-    public function createMilestone($repository, $title, array $options = array())
+    public function createMilestone($repository, $title, array $options = [])
     {
         $options = array_merge(array(
             'title'  => $title,
@@ -73,7 +73,7 @@ class Milestones extends Api
      *
      * @return array A single milestone array.
      */
-    public function updateMilestone($repository, $number, array $options = array())
+    public function updateMilestone($repository, $number, array $options = [])
     {
         return $this->request()->patch('repos/' . $repository . '/milestones/' . $number, $options);
     }
@@ -89,7 +89,7 @@ class Milestones extends Api
      *
      * @return bool Success.
      */
-    public function deleteMilestone($repository, $number, array $options = array())
+    public function deleteMilestone($repository, $number, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'repos/' . $repository . '/milestones/' . $number, $options);
     }

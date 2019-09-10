@@ -23,7 +23,7 @@ class Configuration extends Api
     const DEFAULT_STATUS_API_ENDPOINT = 'https://status.github.com/api/';
     const DEFAULT_USER_AGENT = 'Octogun PHP Package';
     
-    public function __construct($client, array $options = array())
+    public function __construct($client, array $options = [])
     {
         parent::__construct($client);
         

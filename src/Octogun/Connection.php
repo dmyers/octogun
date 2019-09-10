@@ -4,7 +4,7 @@ namespace Octogun;
 
 class Connection extends Api
 {
-    public function create(array $options = array())
+    public function create(array $options = [])
     {
         $options = array_merge(array(
             'authenticate'     => true,

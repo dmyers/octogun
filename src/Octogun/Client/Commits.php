@@ -21,7 +21,7 @@ class Commits extends Api
      *
      * @return array An array of representing commits.
      */
-    public function commits($repo, $sha_or_branch = 'master', array $options = array())
+    public function commits($repo, $sha_or_branch = 'master', array $options = [])
     {
         $options = array_merge(array(
             'sha'      => $sha_or_branch,
@@ -42,7 +42,7 @@ class Commits extends Api
      *
      * @return array An array representing the commit.
      */
-    public function commit($repo, $sha, array $options = array())
+    public function commit($repo, $sha, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/commits/' . $sha, $options);
     }
@@ -60,7 +60,7 @@ class Commits extends Api
      *
      * @return array An array representing the new commit.
      */
-    public function createCommit($repo, $message, $tree, $parents = null, array $options = array())
+    public function createCommit($repo, $message, $tree, $parents = null, array $options = [])
     {
         $options = array_merge(array(
             'message' => $message,
@@ -84,7 +84,7 @@ class Commits extends Api
      *
      * @return array An array of representing comments.
      */
-    public function listCommitComments($repo, array $options = array())
+    public function listCommitComments($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/comments', $options);
     }
@@ -100,7 +100,7 @@ class Commits extends Api
      *
      * @return array  An array of representing comments.
      */
-    public function commitComments($repo, $sha, array $options = array())
+    public function commitComments($repo, $sha, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/commits/' . $sha . '/comments', $options);
     }
@@ -116,7 +116,7 @@ class Commits extends Api
      *
      * @return array An array representing the comment.
      */
-    public function commitComment($repo, $id, array $options = array())
+    public function commitComment($repo, $id, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/comments/' . $id, $options);
     }
@@ -136,7 +136,7 @@ class Commits extends Api
      *
      * @return array An array representing the new commit comment.
      */
-    public function createCommitComment($repo, $sha, $body, $path = null, $line = null, $position = null, array $options = array())
+    public function createCommitComment($repo, $sha, $body, $path = null, $line = null, $position = null, array $options = [])
     {
         $options = array_merge(array(
             'body'      => $body,
@@ -161,7 +161,7 @@ class Commits extends Api
      *
      * @return array An array representing the updated commit comment.
      */
-    public function updateCommitComment($repo, $id, $body, array $options = array())
+    public function updateCommitComment($repo, $id, $body, array $options = [])
     {
         $options = array_merge(array(
             'body' => $body,
@@ -181,7 +181,7 @@ class Commits extends Api
      *
      * @return bool
      */
-    public function deleteCommitComment($repo, $id, array $options = array())
+    public function deleteCommitComment($repo, $id, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'repo/' . $repo . '/comments/' . $id, $options);
     }
@@ -198,7 +198,7 @@ class Commits extends Api
      *
      * @return array An array representing the comparison.
      */
-    public function compare($repo, $start, $endd, array $options = array())
+    public function compare($repo, $start, $endd, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/compare/' . $start . '...' . $endd, $options);
     }
@@ -215,7 +215,7 @@ class Commits extends Api
      *
      * @return array An array representing the comparison.
      */
-    public function merge($repo, $base, $head, array $options = array())
+    public function merge($repo, $base, $head, array $options = [])
     {
         $options = array_merge(array(
             'base' => $base,

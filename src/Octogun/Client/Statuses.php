@@ -21,7 +21,7 @@ class Statuses extends Api
      * 
      * @return array A list of statuses.
      */
-    public function statuses($repo, $sha, array $options = array())
+    public function statuses($repo, $sha, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/statuses/' . $sha, $options);
     }
@@ -38,7 +38,7 @@ class Statuses extends Api
      * 
      * @return array A status.
      */
-    public function createStatus($repo, $sha, $state, array $options = array())
+    public function createStatus($repo, $sha, $state, array $options = [])
     {
         $options = array_merge(array(
             'state' => $state,

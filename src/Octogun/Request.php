@@ -6,7 +6,7 @@ class Request extends Api
 {
     public $fixture = false;
     
-    public function delete($path, array $options = array())
+    public function delete($path, array $options = [])
     {
         $response = $this->sendRequest('delete', $path, $options);
         $body = $this->parseResponse($response);
@@ -14,7 +14,7 @@ class Request extends Api
         return $body;
     }
     
-    public function get($path, array $options = array())
+    public function get($path, array $options = [])
     {
         $response = $this->sendRequest('get', $path, $options);
         $body = $this->parseResponse($response);
@@ -22,7 +22,7 @@ class Request extends Api
         return $body;
     }
     
-    public function patch($path, array $options = array())
+    public function patch($path, array $options = [])
     {
         $response = $this->sendRequest('patch', $path, $options);
         $body = $this->parseResponse($response);
@@ -30,7 +30,7 @@ class Request extends Api
         return $body;
     }
     
-    public function post($path, array $options = array())
+    public function post($path, array $options = [])
     {
         $response = $this->sendRequest('post', $path, $options);
         $body = $this->parseResponse($response);
@@ -38,7 +38,7 @@ class Request extends Api
         return $body;
     }
     
-    public function put($path, array $options = array())
+    public function put($path, array $options = [])
     {
         $response = $this->sendRequest('put', $path, $options);
         $body = $this->parseResponse($response);
@@ -46,7 +46,7 @@ class Request extends Api
         return $body;
     }
     
-    public function booleanFromResponse($method, $path, array $options = array())
+    public function booleanFromResponse($method, $path, array $options = [])
     {
         try {
             $response = $this->sendRequest($method, $path, $options);
@@ -57,7 +57,7 @@ class Request extends Api
         return $response->getStatusCode() == 204;
     }
     
-    public function sendRequest($method, $path, array $options = array())
+    public function sendRequest($method, $path, array $options = [])
     {
         $path = ltrim($path, '/'); // leading slash in path fails in github:enterprise
         

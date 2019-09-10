@@ -17,7 +17,7 @@ class Objects extends Api
      *
      * @return array An array representing the fetched tree.
      */
-    public function tree($repo, $tree_sha, array $options = array())
+    public function tree($repo, $tree_sha, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/git/trees/' . $tree_sha, $options);
     }
@@ -33,7 +33,7 @@ class Objects extends Api
      *
      * @return array An array representing the new tree.
      */
-    public function createTree($repo, $tree, array $options = array())
+    public function createTree($repo, $tree, array $options = [])
     {
         $options = array_merge(array(
             'tree' => $tree,
@@ -53,7 +53,7 @@ class Objects extends Api
      *
      * @return array An array representing the fetched blob.
      */
-    public function blob($repo, $blob_sha, array $options = array())
+    public function blob($repo, $blob_sha, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/git/blobs/' . $blob_sha, $options);
     }
@@ -70,7 +70,7 @@ class Objects extends Api
      *
      * @return string The new blob's SHA.
      */
-    public function createBlob($repo, $content, $encoding = 'utf-8', array $options = array())
+    public function createBlob($repo, $content, $encoding = 'utf-8', array $options = [])
     {
         $options = array_merge(array(
             'content'  => $content,
@@ -91,7 +91,7 @@ class Objects extends Api
      *
      * @return array Array representing the tag.
      */
-    public function tag($repo, $tag_sha, array $options = array())
+    public function tag($repo, $tag_sha, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/git/tags/' . $tag_sha, $options);
     }
@@ -116,7 +116,7 @@ class Objects extends Api
      *
      * @return array Array representing new tag.
      */
-    public function createTag($repo, $tag, $message, $object_sha, $type, $tagger_name, $tagger_email, $tagger_date, array $options = array())
+    public function createTag($repo, $tag, $message, $object_sha, $type, $tagger_name, $tagger_email, $tagger_date, array $options = [])
     {
         $options = array_merge(array(
             'tag'     => $tag,

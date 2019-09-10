@@ -5,7 +5,7 @@ namespace Octogun;
 class Api
 {
     public $client;
-    public $aliases = array();
+    public $aliases = [];
     
     public function __construct(Client $client)
     {

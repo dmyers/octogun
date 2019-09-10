@@ -17,7 +17,7 @@ class Gitignore extends Api
      * 
      * @return array List of templates.
      */
-    public function gitignoreTemplates(array $options = array())
+    public function gitignoreTemplates(array $options = [])
     {
         return $this->request()->get('gitignore/templates', $options);
     }
@@ -37,7 +37,7 @@ class Gitignore extends Api
      * 
      * @return array List of templates.
      */
-    public function gitignoreTemplate($template_name, array $options = array())
+    public function gitignoreTemplate($template_name, array $options = [])
     {
         return $this->request()->get('gitignore/templates/' . $template_name, $options);
     }

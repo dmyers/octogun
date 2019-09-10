@@ -9,7 +9,7 @@ class Client
     protected $configuration;
     protected $request;
     
-    public function __construct(array $options = array())
+    public function __construct(array $options = [])
     {
         $this->authentication = new Authentication($this);
         

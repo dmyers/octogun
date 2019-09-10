@@ -20,7 +20,7 @@ class Notifications extends Api
      *
      * @return array Array of notifications.
      */
-    public function notifications(array $options = array())
+    public function notifications(array $options = [])
     {
         return $this->request()->get('notifications', $options);
     }
@@ -35,7 +35,7 @@ class Notifications extends Api
      *
      * @return array Array of notifications.
      */
-    public function repositoryNotifications($repo, array $options = array())
+    public function repositoryNotifications($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/notifications', $options);
     }
@@ -49,7 +49,7 @@ class Notifications extends Api
      *
      * @return bool True if marked as read, false otherwise.
      */
-    public function markNotificationsAsRead(array $options = array())
+    public function markNotificationsAsRead(array $options = [])
     {
         try {
             $response = $this->request()->sendRequest('put', 'notifications', $options);
@@ -70,7 +70,7 @@ class Notifications extends Api
      *
      * @return bool True if marked as read, false otherwise.
      */
-    public function markRepositoryNotificationsAsRead($repo, array $options = array())
+    public function markRepositoryNotificationsAsRead($repo, array $options = [])
     {
         try {
             $response = $this->request()->sendRequest('put', 'repos/' . $repo . '/notifications', $options);
@@ -91,7 +91,7 @@ class Notifications extends Api
      *
      * @return array Array of notifications.
      */
-    public function threadNotifications($thread_id, array $options = array())
+    public function threadNotifications($thread_id, array $options = [])
     {
         return $this->request()->get('notifications/threads/' . $thread_id, $options);
     }
@@ -106,7 +106,7 @@ class Notifications extends Api
      *
      * @return bool True if updated, false otherwise.
      */
-    public function markThreadAsRead($thread_id, array $options = array())
+    public function markThreadAsRead($thread_id, array $options = [])
     {
         try {
             $response = $this->request()->sendRequest('patch', 'notifications/threads/' . $thread_id, $options);
@@ -127,7 +127,7 @@ class Notifications extends Api
      *
      * @return array Subscription.
      */
-    public function threadSubscription($thread_id, array $options = array())
+    public function threadSubscription($thread_id, array $options = [])
     {
         return $this->request()->get('notifications/threads/' . $thread_id . '/subscription', $options);
     }
@@ -147,7 +147,7 @@ class Notifications extends Api
      *
      * @return array Updated subscription.
      */
-    public function updateThreadSubscription($thread_id, array $options = array())
+    public function updateThreadSubscription($thread_id, array $options = [])
     {
         return $this->request()->put('notifications/threads/' . $thread_id . '/subscription', $options);
     }
@@ -162,7 +162,7 @@ class Notifications extends Api
      *
      * @return bool True if delete successful, false otherwise.
      */
-    public function deleteThreadSubscription($thread_id, array $options = array())
+    public function deleteThreadSubscription($thread_id, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'notifications/threads/' . $thread_id, $options);
     }

@@ -21,7 +21,7 @@ class Issues extends Api
      *
      * @return array A list of issues matching the search term and state.
      */
-    public function searchIssues($repo, $search_term, $state = 'open', array $options = array())
+    public function searchIssues($repo, $search_term, $state = 'open', array $options = [])
     {
         $issues = $this->request()->get('legacy/issue/search/' . $repo . '/' . $state . '/' . $search_term, $options);
         
@@ -38,7 +38,7 @@ class Issues extends Api
      *
      * @return array A list of issues for a repository.
      */
-    public function listIssues($repository = null, array $options = array())
+    public function listIssues($repository = null, array $options = [])
     {
         $path = '';
         
@@ -60,7 +60,7 @@ class Issues extends Api
      *
      * @return array A list of issues for a repository.
      */
-    public function userIssues(array $options = array())
+    public function userIssues(array $options = [])
     {
         return $this->request()->get('user/issues', $options);
     }
@@ -75,7 +75,7 @@ class Issues extends Api
      *
      * @return array A list of issues for a repository.
      */
-    public function orgIssues($org, array $options = array())
+    public function orgIssues($org, array $options = [])
     {
         return $this->request()->get('orgs' . $org . '/issues', $options);
     }
@@ -92,7 +92,7 @@ class Issues extends Api
      *
      * @return array Your newly created issue.
      */
-    public function createIssue($repo, $title, $body, array $options = array())
+    public function createIssue($repo, $title, $body, array $options = [])
     {
         $options = array_merge(array(
             'title' => $title,
@@ -113,7 +113,7 @@ class Issues extends Api
      *
      * @return array The issue you requested, if it exists.
      */
-    public function issue($repo, $number, array $options = array())
+    public function issue($repo, $number, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/issues/' . $number, $options);
     }
@@ -129,7 +129,7 @@ class Issues extends Api
      *
      * @return array The updated Issue.
      */
-    public function closeIssue($repo, $number, array $options = array())
+    public function closeIssue($repo, $number, array $options = [])
     {
         $options = array_merge(array(
             'state' => 'closed',
@@ -149,7 +149,7 @@ class Issues extends Api
      *
      * @return array The updated Issue.
      */
-    public function reopenIssue($repo, $number, array $options = array())
+    public function reopenIssue($repo, $number, array $options = [])
     {
         $options = array_merge(array(
             'state' => 'open',
@@ -171,7 +171,7 @@ class Issues extends Api
      *
      * @return array The updated Issue.
      */
-    public function updateIssue($repo, $number, $title, $body, array $options = array())
+    public function updateIssue($repo, $number, $title, $body, array $options = [])
     {
         $options = array_merge(array(
             'title' => $title,
@@ -193,7 +193,7 @@ class Issues extends Api
      *
      * @return array List of issues comments.
      */
-    public function issuesComments($repo, array $options = array())
+    public function issuesComments($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/issues/comments', $options);
     }
@@ -209,7 +209,7 @@ class Issues extends Api
      *
      * @return array Array of comments that belong to an issue.
      */
-    public function issueComments($repo, $number, array $options = array())
+    public function issueComments($repo, $number, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/issues/' . $number . '/comments', $options);
     }
@@ -225,7 +225,7 @@ class Issues extends Api
      *
      * @return array A JSON encoded Comment.
      */
-    public function issueComment($repo, $number, array $options = array())
+    public function issueComment($repo, $number, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/issues/comments/' . $number, $options);
     }
@@ -242,7 +242,7 @@ class Issues extends Api
      * 
      * @return array A JSON encoded Comment.
      */
-    public function addComment($repo, $number, $comment, array $options = array())
+    public function addComment($repo, $number, $comment, array $options = [])
     {
         $options = array_merge(array(
             'body' => $comment,
@@ -263,7 +263,7 @@ class Issues extends Api
      * 
      * @return array A JSON encoded Comment.
      */
-    public function updateComment($repo, $number, $comment, array $options = array())
+    public function updateComment($repo, $number, $comment, array $options = [])
     {
         $options = array_merge(array(
             'body' => $comment,
@@ -283,7 +283,7 @@ class Issues extends Api
      *
      * @return bool Success.
      */
-    public function deleteComment($repo, $number, array $options = array())
+    public function deleteComment($repo, $number, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'repos/' . $repo . '/issues/comments/' . $number, $options);
     }
@@ -299,7 +299,7 @@ class Issues extends Api
      *
      * @return array Array of events for that issue.
      */
-    public function issueEvents($repo, $number, array $options = array())
+    public function issueEvents($repo, $number, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/issues/' . $number . '/events', $options);
     }
@@ -315,7 +315,7 @@ class Issues extends Api
      *
      * @return array A single Event for an Issue.
      */
-    public function issueEvent($repo, $number, array $options = array())
+    public function issueEvent($repo, $number, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/issues/events/' . $number, $options);
     }

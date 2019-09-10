@@ -19,7 +19,7 @@ class Say extends Api
      *
      * @return string
      */
-    public function say($text = null, array $options = array())
+    public function say($text = null, array $options = [])
     {
         if (!empty($text)) {
             $options['s'] = $text;

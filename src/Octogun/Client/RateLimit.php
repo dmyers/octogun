@@ -15,7 +15,7 @@ class RateLimit extends Api
      *
      * @return int The rate limit.
      */
-    public function rateLimit(array $options = array())
+    public function rateLimit(array $options = [])
     {
         $response = $this->request()->sendRequest('get', 'rate_limit', $options);
         
@@ -31,7 +31,7 @@ class RateLimit extends Api
      *
      * @return int The rate limit remaining.
      */
-    public function rateLimitRemaining(array $options = array())
+    public function rateLimitRemaining(array $options = [])
     {
         $response = $this->request()->sendRequest('get', 'rate_limit', $options);
         

@@ -16,7 +16,7 @@ class Labels extends Api
      *
      * @return array A list of the labels across the repository.
      */
-    public function labels($repo, array $options = array())
+    public function labels($repo, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/labels', $options);
     }
@@ -32,7 +32,7 @@ class Labels extends Api
      *
      * @return array A single label from the repository.
      */
-    public function label($repo, $name, array $options = array())
+    public function label($repo, $name, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/labels/' . urlencode($name), $options);
     }
@@ -49,7 +49,7 @@ class Labels extends Api
      * 
      * @return array An array of the new label.
      */
-    public function addLabel($repo, $label, $color = 'ffffff', array $options = array())
+    public function addLabel($repo, $label, $color = 'ffffff', array $options = [])
     {
         $options = array_merge(array(
             'name'  => $label,
@@ -70,7 +70,7 @@ class Labels extends Api
      *
      * @return array An array of the updated label.
      */
-    public function updateLabel($repo, $label, array $options = array())
+    public function updateLabel($repo, $label, array $options = [])
     {
         return $this->request()->patch('repos/' . $repo . '/labels/' . urlencode($label), $options);
     }
@@ -88,7 +88,7 @@ class Labels extends Api
      *
      * @return bool Success.
      */
-    public function deleteLabel($repo, $label, array $options = array())
+    public function deleteLabel($repo, $label, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'repos/' . $repo . '/labels/' . urlencode($label), $options);
     }
@@ -107,7 +107,7 @@ class Labels extends Api
      *
      * @return array A list of the labels currently on the issue.
      */
-    public function removeLabel($repo, $number, $label, array $options = array())
+    public function removeLabel($repo, $number, $label, array $options = [])
     {
         return $this->request()->delete('repos/' . $repo . '/issues/' . $number . '/labels/' . urlencode($label), $options);
     }
@@ -125,7 +125,7 @@ class Labels extends Api
      *
      * @return bool Success of operation.
      */
-    public function removeAllLabels($repo, $number, array $options = array())
+    public function removeAllLabels($repo, $number, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'repos/' . $repo . '/issues/' . $number . '/labels', $options);
     }
@@ -141,7 +141,7 @@ class Labels extends Api
      *
      * @return array A list of the labels currently on the issue.
      */
-    public function labelsForIssue($repo, $number, array $options = array())
+    public function labelsForIssue($repo, $number, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/issues/' . $number . '/labels', $options);
     }
@@ -174,7 +174,7 @@ class Labels extends Api
      *
      * @return array A list of the labels currently on the issue.
      */
-    public function replaceAllLabels($repo, $number, $labels, array $options = array())
+    public function replaceAllLabels($repo, $number, $labels, array $options = [])
     {
         return $this->request()->put('repos/' . $repo . '/issues/' . $number . '/labels', $labels);
     }
@@ -190,7 +190,7 @@ class Labels extends Api
      *
      * @return array A list of the labels across the milestone.
      */
-    public function labelsForMilestone($repo, $number, array $options = array())
+    public function labelsForMilestone($repo, $number, array $options = [])
     {
         return $this->request()->get('repos/' . $repo . '/milestones/' . $number . '/labels', $options);
     }

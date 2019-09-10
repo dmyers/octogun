@@ -19,7 +19,7 @@ class Authorizations extends Api
      *
      * @return array A list of authorizations for the authenticated user.
      */
-    public function authorizations(array $options = array())
+    public function authorizations(array $options = [])
     {
         return $this->request()->get('authorizations', $options);
     }
@@ -37,7 +37,7 @@ class Authorizations extends Api
      *
      * @return array A single authorization for the authenticated user.
      */
-    public function authorization($number, array $options = array())
+    public function authorization($number, array $options = [])
     {
         return $this->request()->get('authorizations/' . $number, $options);
     }
@@ -54,7 +54,7 @@ class Authorizations extends Api
      *
      * @return array A single authorization for the authenticated user.
      */
-    public function createAuthorization(array $options = array())
+    public function createAuthorization(array $options = [])
     {
         $options = array_merge(array('scopes' => ''), $options);
         
@@ -74,7 +74,7 @@ class Authorizations extends Api
      *
      * @return array A single (updated) authorization for the authenticated user.
      */
-    public function updateAuthorization($number, array $options = array())
+    public function updateAuthorization($number, array $options = [])
     {
         $options = array_merge(array('scopes' => ''), $options);
         
@@ -94,7 +94,7 @@ class Authorizations extends Api
      *
      * @return bool Success
      */
-    public function deleteAuthorization($number, array $options = array())
+    public function deleteAuthorization($number, array $options = [])
     {
         return $this->request()->booleanFromResponse('delete', 'authorizations/' . $number, $options);
     }
@@ -132,7 +132,7 @@ class Authorizations extends Api
      *
      * @return string The url to redirect the user to authorize.
      */
-    public function authorizeUrl(array $options = array())
+    public function authorizeUrl(array $options = [])
     {
         $options = array_merge(array(
             'client_id' => $this->configuration()->get('client_id'),

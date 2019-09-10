@@ -64,7 +64,7 @@ class ErrorException extends \RuntimeException
         }
         
         if (empty($message) && isset($response_body['errors'])) {
-            $error_msgs = array();
+            $error_msgs = [];
             
             foreach ($response_body['errors'] as $error) {
                 $error_msgs[] = $error['message'];
