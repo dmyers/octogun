@@ -21,7 +21,11 @@
   },
   "autoload": {
     "psr-0": {
-      "Octogun": "src/",
+      "Octogun": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-0": {
       "Octogun\\Test": "test/"
     }
   },
