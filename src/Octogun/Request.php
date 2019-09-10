@@ -95,7 +95,7 @@ class Request extends Api
         if (!empty($options['accept'])) {
             $connection->addHeader('Accept: ' . $options['accept']);
         } else {
-            $connection->addHeader('Accept: application/vnd.github.beta+json');
+            $connection->addHeader('Accept: application/vnd.github.v3+json');
         }
         
         if ($token) {
