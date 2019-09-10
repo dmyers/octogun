@@ -32,7 +32,7 @@ For methods that require authentication, you'll need to setup a client with
 your login and password.
 
 ```php
-$client = new \Octogun\Client(array('login' => 'me', 'password' => 'sekret'));
+$client = new \Octogun\Client(['login' => 'me', 'password' => 'sekret']);
 $client->users()->follow('sferik');
 ```
 
@@ -41,7 +41,7 @@ Alternately, you can authenticate with a [GitHub OAuth2 token][oauth].
 [oauth]: http://developer.github.com/v3/oauth
 
 ```php
-$client = new \Octogun\Client(array('login' => 'me', 'oauth_token' => 'oauth2token'));
+$client = new \Octogun\Client(['login' => 'me', 'oauth_token' => 'oauth2token']);
 $client->users()->follow('sferik');
 ```
 
@@ -51,7 +51,7 @@ To use with [GitHub Enterprise](https://enterprise.github.com/), you'll need to
 set the API and web endpoints before instantiating a client.
 
 ```php
-$client = new \Octogun\Client(array('login' => 'USERNAME', 'password' => 'PASSWORD'));
+$client = new \Octogun\Client(['login' => 'USERNAME', 'password' => 'PASSWORD']);
 $client->configuration()->set('api_endpoint', 'https://github.company.com/api/v3';
 $client->configuration()->set('web_endpoint', 'https://github.company.com/';
 ```
