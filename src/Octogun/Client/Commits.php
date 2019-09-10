@@ -6,9 +6,9 @@ use Octogun\Api;
 
 class Commits extends Api
 {
-    public $aliases = array(
+    public $aliases = [
         'listCommits' => 'commits',
-    );
+    ];
     
     /**
      * List commits.
@@ -23,10 +23,10 @@ class Commits extends Api
      */
     public function commits($repo, $sha_or_branch = 'master', array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'sha'      => $sha_or_branch,
             'per_page' => 25,
-        ), $options);
+        ], $options);
         
         return $this->request()->get('repos/' . $repo . '/commits', $options);
     }
@@ -62,10 +62,10 @@ class Commits extends Api
      */
     public function createCommit($repo, $message, $tree, $parents = null, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'message' => $message,
             'tree'    => $tree,
-        ), $options);
+        ], $options);
         
         if (!empty($parents)) {
             $options['parents'] = $parents;
@@ -138,13 +138,13 @@ class Commits extends Api
      */
     public function createCommitComment($repo, $sha, $body, $path = null, $line = null, $position = null, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'body'      => $body,
             'commit_id' => $sha,
             'path'      => $path,
             'line'      => $line,
             'position'  => $position,
-        ), $options);
+        ], $options);
         
         return $this->request()->post('repos/' . $repo . '/commits/' . $sha . '/comments', $options);
     }
@@ -163,9 +163,9 @@ class Commits extends Api
      */
     public function updateCommitComment($repo, $id, $body, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'body' => $body,
-        ), $options);
+        ], $options);
         
         return $this->request()->patch('repos/' . $repo . '/comments/' . $id, $options);
     }
@@ -217,10 +217,10 @@ class Commits extends Api
      */
     public function merge($repo, $base, $head, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'base' => $base,
             'head' => $head,
-        ), $options);
+        ], $options);
         
         return $this->request()->post('repos/' . $repo . '/merges', $options);
     }

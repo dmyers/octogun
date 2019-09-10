@@ -10,10 +10,10 @@ class Authentication extends Api
         $password = $this->configuration()->get('password');
         
         if (!empty($login) && !empty($password)) {
-            return array(
+            return [
                 'login'    => $login,
                 'password' => $password,
-            );
+            ];
         }
         
         return [];
@@ -46,9 +46,9 @@ class Authentication extends Api
         $client_id = $this->configuration()->get('client_id');
         $client_secret = $this->configuration()->get('client_secret');
         
-        return array(
+        return [
             'client_id'     => $client_id,
             'client_secret' => $client_secret,
-        );
+        ];
     }
 }

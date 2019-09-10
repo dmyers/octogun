@@ -6,9 +6,9 @@ use Octogun\Api;
 
 class Downloads extends Api
 {
-    public $aliases = array(
+    public $aliases = [
         'listDownloads' => 'downloads',
-    );
+    ];
     
     /**
      * List available downloads for a repository.

@@ -6,10 +6,10 @@ use Octogun\Api;
 
 class Milestones extends Api
 {
-    public $aliases = array(
+    public $aliases = [
         'milestones'    => 'listMilestones',
         'editMilestone' => 'updateMilestone',
-    );
+    ];
     
     /**
      * List milestones for a repository.
@@ -55,9 +55,9 @@ class Milestones extends Api
      */
     public function createMilestone($repository, $title, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'title'  => $title,
-        ), $options);
+        ], $options);
         
         return $this->request()->post('repos/' . $repository . '/milestones', $options);
     }

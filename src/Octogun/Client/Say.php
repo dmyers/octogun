@@ -6,9 +6,9 @@ use Octogun\Api;
 
 class Say extends Api
 {
-    public $aliases = array(
+    public $aliases = [
         'octocat' => 'say',
-    );
+    ];
     
     /**
      * Return a nifty ASCII Octocat with GitHub wisdom

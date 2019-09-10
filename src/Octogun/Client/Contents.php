@@ -6,7 +6,7 @@ use Octogun\Api;
 
 class Contents extends Api
 {
-    public $aliases = array(
+    public $aliases = [
         'contents'       => 'content',
         'createContent'  => 'createContents',
         'addContent'     => 'createContents',
@@ -15,7 +15,7 @@ class Contents extends Api
         'deleteContent'  => 'deleteContents',
         'removeContent'  => 'deleteContents',
         'removeContents' => 'deleteContents',
-    );
+    ];
     
     /**
      * Receive the default Readme for a repository.
@@ -107,9 +107,9 @@ class Contents extends Api
         $sha = $args[3];
         $content = $args[4];
         
-        $options = array_merge(array(
+        $options = array_merge([
             'sha' => $sha,
-        ), $options);
+        ], $options);
         
         return $this->createContent($repo, $path, $message, $content, $options);
     }

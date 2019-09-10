@@ -6,10 +6,10 @@ use Octogun\Api;
 
 class Issues extends Api
 {
-    public $aliases = array(
+    public $aliases = [
         'issues'    => 'listIssues',
         'openIssue' => 'createIssue',
-    );
+    ];
     
     /**
      * Search issues within a repository.
@@ -94,10 +94,10 @@ class Issues extends Api
      */
     public function createIssue($repo, $title, $body, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'title' => $title,
             'body'  => $body,
-        ), $options);
+        ], $options);
         
         return $this->request()->post('repos/' . $repo . '/issues', $options);
     }
@@ -131,9 +131,9 @@ class Issues extends Api
      */
     public function closeIssue($repo, $number, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'state' => 'closed',
-        ), $options);
+        ], $options);
         
         return $this->request()->patch('repos/' . $repo . '/issues/' . $number, $options);
     }
@@ -151,9 +151,9 @@ class Issues extends Api
      */
     public function reopenIssue($repo, $number, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'state' => 'open',
-        ), $options);
+        ], $options);
         
         return $this->request()->patch('repos/' . $repo . '/issues/' . $number, $options);
     }
@@ -173,10 +173,10 @@ class Issues extends Api
      */
     public function updateIssue($repo, $number, $title, $body, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'title' => $title,
             'body'  => $body,
-        ), $options);
+        ], $options);
         
         return $this->request()->patch('repos/' . $repo . '/issues/' . $number, $options);
     }
@@ -244,9 +244,9 @@ class Issues extends Api
      */
     public function addComment($repo, $number, $comment, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'body' => $comment,
-        ), $options);
+        ], $options);
         
         return $this->request()->post('repos/' . $repo . '/issues/' . $number . '/comments', $options);
     }
@@ -265,9 +265,9 @@ class Issues extends Api
      */
     public function updateComment($repo, $number, $comment, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'body' => $comment,
-        ), $options);
+        ], $options);
         
         return $this->request()->patch('repos/' . $repo . '/issues/comments/' . $number, $options);
     }

@@ -6,7 +6,7 @@ use Octogun\Api;
 
 class Pulls extends Api
 {
-    public $aliases = array(
+    public $aliases = [
         'pulls'               => 'pullRequests',
         'pull'                => 'pullRequest',
         'pullCommits'         => 'pullRequestCommits',
@@ -26,7 +26,7 @@ class Pulls extends Api
         'deleteReviewComment' => 'deletePullRequestComment',
         'pullRequestFiles'    => 'pullRequestFiles',
         'pullRequestMerged'   => 'pullMerged',
-    );
+    ];
     
     /**
      * List pull requests for a repository.
@@ -41,9 +41,9 @@ class Pulls extends Api
      */
     public function pullRequests($repo, $state = 'open', array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'state' => $state,
-        ));
+        ]);
         
         return $this->request()->get('repos/' . $repo . '/pulls', $options);
     }
@@ -83,12 +83,12 @@ class Pulls extends Api
      */
     public function createPullRequest($repo, $base, $head, $title, $body, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'base'  => $base,
             'head'  => $head,
             'title' => $title,
             'body'  => $body,
-        ));
+        ]);
         
         return $this->request()->post('repos/' . $repo . '/pulls', $options);
     }
@@ -111,11 +111,11 @@ class Pulls extends Api
      */
     public function createPullRequestForIssue($repo, $base, $head, $issue, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'base'  => $base,
             'head'  => $head,
             'issue' => $issue,
-        ));
+        ]);
         
         return $this->request()->post('repos/' . $repo . '/pulls', $options);
     }
@@ -136,11 +136,11 @@ class Pulls extends Api
      */
     public function updatePullRequest($repo, $id, $title = null, $body = null, $state = null, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'title' => $title,
             'body'  => $body,
             'state' => $state,
-        ));
+        ]);
         
         foreach ($options as $key => $value) {
             if ($value == null) {
@@ -233,12 +233,12 @@ class Pulls extends Api
      */
     public function createPullRequestComment($repo, $pull_id, $body, $commit_id, $path, $position, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'body'      => $body,
             'commit_id' => $commit_id,
             'path'      => $path,
             'position'  => $position,
-        ));
+        ]);
         
         return $this->request()->post('repos/' . $repo . '/pulls/' . $pull_id . '/comments', $options);
     }
@@ -258,10 +258,10 @@ class Pulls extends Api
      */
     public function createPullRequestCommentReply($repo, $pull_id, $body, $comment_id, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'body'        => $body,
             'in_reply_to' => $comment_id,
-        ));
+        ]);
         
         return $this->request()->post('repos/' . $repo . '/pulls/' . $pull_id . '/comments', $options);
     }
@@ -280,9 +280,9 @@ class Pulls extends Api
      */
     public function updatePullRequestComment($repo, $comment_id, $body, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'body' => $body,
-        ));
+        ]);
         
         return $this->request()->patch('repos/' . $repo . '/pulls/comments/' . $comment_id, $options);
     }
@@ -333,9 +333,9 @@ class Pulls extends Api
      */
     public function mergePullRequest($repo, $number, $commit_message = '', array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'commit_message' => $commit_message,
-        ));
+        ]);
         
         return $this->request()->put('repos/' . $repo . '/pulls/' . $number . '/merge', $options);
     }

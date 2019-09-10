@@ -51,10 +51,10 @@ class Labels extends Api
      */
     public function addLabel($repo, $label, $color = 'ffffff', array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'name'  => $label,
             'color' => $color,
-        ), $options);
+        ], $options);
         
         return $this->request()->post('repos/' . $repo . '/labels', $options);
     }

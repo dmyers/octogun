@@ -56,7 +56,7 @@ class Authorizations extends Api
      */
     public function createAuthorization(array $options = [])
     {
-        $options = array_merge(array('scopes' => ''), $options);
+        $options = array_merge(['scopes' => ''], $options);
         
         return $this->request()->post('authorizations', $options);
     }
@@ -76,7 +76,7 @@ class Authorizations extends Api
      */
     public function updateAuthorization($number, array $options = [])
     {
-        $options = array_merge(array('scopes' => ''), $options);
+        $options = array_merge(['scopes' => ''], $options);
         
         return $this->request()->patch('authorizations/' . $number, 'authorizations', $options);
     }
@@ -110,7 +110,7 @@ class Authorizations extends Api
      */
     public function scopes($token = null)
     {
-        $response = $this->request()->sendRequest('get', 'user', array('access_token' => $token));
+        $response = $this->request()->sendRequest('get', 'user', ['access_token' => $token]);
         $scopes = $response->getHeader('X-OAuth-Scopes');
         $scopes = explode(',', $scopes);
         
@@ -134,10 +134,10 @@ class Authorizations extends Api
      */
     public function authorizeUrl(array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'client_id' => $this->configuration()->get('client_id'),
             'endpoint'  => $this->configuration()->get('web_endpoint'),
-        ), $options);
+        ], $options);
         
         $authorize_url = $options['endpoint'];
         unset($options['endpoint']);

@@ -6,16 +6,16 @@ class Connection extends Api
 {
     public function create(array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'authenticate'     => true,
             'force_urlencoded' => false,
             'raw'              => false,
-        ), $options);
+        ], $options);
         
         $proxy = $this->configuration()->get('proxy');
         
         if (!empty($proxy)) {
-            $options = array_merge(array('proxy' => $proxy), $options);
+            $options = array_merge(['proxy' => $proxy], $options);
         }
         
         $connection = new \Buzz\Message\Request();
@@ -46,10 +46,10 @@ class Connection extends Api
         
         $connection->addHeader('User-Agent: ' . $this->configuration()->get('user_agent'));
         
-        return array(
+        return [
             'connection' => $connection,
             'listener'   => $listener,
             'options'    => $options,
-        );
+        ];
     }
 }

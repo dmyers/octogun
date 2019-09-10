@@ -6,10 +6,10 @@ use Octogun\Api;
 
 class Stats extends Api
 {
-    public $aliases = array(
+    public $aliases = [
         'contributorStats' => 'contributorsStats',
         'punchCard'        => 'punchCardStats',
-    );
+    ];
     
     /**
      * Get contributors list with additions, deletions, and commit counts.

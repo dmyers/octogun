@@ -120,7 +120,7 @@ class Request extends Api
         if (strtolower($method) == 'get') {
             $path .= '?' . http_build_query($options);
         }
-        elseif (in_array(strtolower($method), array('patch', 'post', 'put'))) {
+        elseif (in_array(strtolower($method), ['patch', 'post', 'put'])) {
             $connection->setContent(json_encode($options, true));
         }
         
@@ -226,10 +226,10 @@ class Request extends Api
         if (file_exists($fixture_path)) {
             $fixture_body = file_get_contents($fixture_path);
             
-            $this->fixture = array(
-                'headers' => array('Content-Type' => 'application/json'),
+            $this->fixture = [
+                'headers' => ['Content-Type' => 'application/json'],
                 'body'    => $fixture_body,
-            );
+            ];
         }
         else {
             throw new \Exception('Unable to find fixture: ' . $fixture);

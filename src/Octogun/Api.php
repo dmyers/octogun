@@ -37,7 +37,7 @@ class Api
         if (array_key_exists($method, $this->aliases)) {
             $alias = $this->aliases[$method];
             
-            return call_user_func_array(array($this, $alias), $args);
+            return call_user_func_array([$this, $alias], $args);
         }
         else {
             throw new \BadMethodCallException('Call to undefined method '.get_class($this).'::'.$method.'()');

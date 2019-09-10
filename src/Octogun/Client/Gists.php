@@ -6,9 +6,9 @@ use Octogun\Api;
 
 class Gists extends Api
 {
-    public $aliases = array(
+    public $aliases = [
         'listGists' => 'gists',
-    );
+    ];
     
     /**
      * List gists for a user or all public gists.
@@ -223,9 +223,9 @@ class Gists extends Api
      */
     public function createGistComment($gist_id, $comment, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'body' => $comment,
-        ), $options);
+        ], $options);
         
         return $this->request()->post('gists/' . $gist_id . '/comments', $options);
     }
@@ -246,9 +246,9 @@ class Gists extends Api
      */
     public function updateGistComment($gist_id, $gist_comment_id, $comment, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'body' => $comment,
-        ), $options);
+        ], $options);
         
         return $this->request()->patch('gists/' . $gist_id . '/comments/' . $gist_comment_id, $options);
     }

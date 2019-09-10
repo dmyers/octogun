@@ -6,10 +6,10 @@ use Octogun\Api;
 
 class Notifications extends Api
 {
-    public $aliases = array(
+    public $aliases = [
         'repoNotifications'           => 'repositoryNotifications',
         'markRepoNotificationsAsRead' => 'markRepositoryNotificationsAsRead',
-    );
+    ];
     
     /**
      * List your notifications.

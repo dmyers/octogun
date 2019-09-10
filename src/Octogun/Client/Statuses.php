@@ -6,9 +6,9 @@ use Octogun\Api;
 
 class Statuses extends Api
 {
-    public $aliases = array(
+    public $aliases = [
         'listStatuses' => 'statuses',
-    );
+    ];
     
     /**
      * List all statuses for a given commit.
@@ -40,9 +40,9 @@ class Statuses extends Api
      */
     public function createStatus($repo, $sha, $state, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'state' => $state,
-        ), $options);
+        ], $options);
         
         return $this->request()->post('repos/' . $repo . '/statuses/' . $sha, $options);
     }
@@ -56,9 +56,9 @@ class Statuses extends Api
      */
     public function githubStatus()
     {
-        $options = array(
+        $options = [
             'endpoint' => $this->configuration()->get('status_api_endpoint'),
-        );
+        ];
         
         return $this->request()->get('status.json', $options);
     }
@@ -72,9 +72,9 @@ class Statuses extends Api
      */
     public function githubStatusLastMessage()
     {
-        $options = array(
+        $options = [
             'endpoint' => $this->configuration()->get('status_api_endpoint'),
-        );
+        ];
         
         return $this->request()->get('last-message.json', $options);
     }
@@ -88,9 +88,9 @@ class Statuses extends Api
      */
     public function githubStatusMessages()
     {
-        $options = array(
+        $options = [
             'endpoint' => $this->configuration()->get('status_api_endpoint'),
-        );
+        ];
         
         return $this->request()->get('messages.json', $options);
     }

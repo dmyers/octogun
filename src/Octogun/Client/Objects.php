@@ -35,9 +35,9 @@ class Objects extends Api
      */
     public function createTree($repo, $tree, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'tree' => $tree,
-        ), $options);
+        ], $options);
         
         return $this->request()->post('repos/' . $repo . '/git/trees', $options);
     }
@@ -72,10 +72,10 @@ class Objects extends Api
      */
     public function createBlob($repo, $content, $encoding = 'utf-8', array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'content'  => $content,
             'encoding' => $encoding,
-        ), $options);
+        ], $options);
         
         return $this->request()->post('repos/' . $repo . '/git/blobs', $options);
     }
@@ -118,17 +118,17 @@ class Objects extends Api
      */
     public function createTag($repo, $tag, $message, $object_sha, $type, $tagger_name, $tagger_email, $tagger_date, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'tag'     => $tag,
             'message' => $message,
             'object'  => $object_sha,
             'type'    => $type,
-            'tagger'  => array(
+            'tagger'  => [
                 'name'  => $tagger_name,
                 'email' => $tagger_email,
                 'date'  => $tagger_date,
-            ),
-        ), $options);
+            ],
+        ], $options);
         
         return $this->request()->post('repos/' . $repo . '/git/tags', $options);
     }

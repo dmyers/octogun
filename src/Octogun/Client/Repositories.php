@@ -6,7 +6,7 @@ use Octogun\Api;
 
 class Repositories extends Api
 {
-    public $aliases = array(
+    public $aliases = [
         'searchRepos'      => 'searchRepositories',
         'repo'             => 'repository',
         'edit'             => 'editRepository',
@@ -28,7 +28,7 @@ class Repositories extends Api
         'getBranch'        => 'branch',
         'repoIssueEvents'  => 'repositoryIssueEvents',
         'repoAssignees'    => 'repositoryAssignees',
-    );
+    ];
     
     /**
      * Legacy repository search.
@@ -210,9 +210,9 @@ class Repositories extends Api
     {
         $organization = isset($options['organization']) ? $options['organization'] : null;
         
-        $options = array_merge(array(
+        $options = array_merge([
             'name' => $name,
-        ), $options);
+        ], $options);
         
         if (empty($organization)) {
             return $this->request()->post('user/repos', $options);
@@ -249,9 +249,9 @@ class Repositories extends Api
      */
     public function setPrivate($repo, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'private' => true,
-        ), $options);
+        ], $options);
         
         return $this->updateRepository($repo, $options);
     }
@@ -266,9 +266,9 @@ class Repositories extends Api
      */
     public function setPublic($repo, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'private' => false,
-        ), $options);
+        ], $options);
         
         return $this->updateRepository($repo, $options);
     }
@@ -306,10 +306,10 @@ class Repositories extends Api
      */
     public function addDeployKey($repo, $title, $key, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'title' => $title,
             'key'   => $key,
-        ), $options);
+        ], $options);
         
         return $this->request()->post('repos/' . $repo . '/keys', $options);
     }
@@ -415,9 +415,9 @@ class Repositories extends Api
      */
     public function contributors($repo, $anon = false, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'anon' => $anon,
-        ), $options);
+        ], $options);
         
         return $this->request()->get('repos/' . $repo . '/contributors', $options);
     }
@@ -594,12 +594,12 @@ class Repositories extends Api
      */
     public function createHook($repo, $name, array $config, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'name'   => $name,
             'config' => $config,
-            'events' => array('push'),
+            'events' => ['push'],
             'active' => true,
-        ), $options);
+        ], $options);
         
         return $this->request()->post('repos/' . $repo . '/hooks', $options);
     }
@@ -622,12 +622,12 @@ class Repositories extends Api
      */
     public function editHook($repo, $id, $name, array $config, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'name'   => $name,
             'config' => $config,
-            'events' => array('push'),
+            'events' => ['push'],
             'active' => true,
-        ), $options);
+        ], $options);
         
         return $this->request()->patch('repos/' . $repo . '/hooks/' . $id, $options);
     }

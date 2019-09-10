@@ -6,7 +6,7 @@ use Octogun\Api;
 
 class Organizations extends Api
 {
-    public $aliases = array(
+    public $aliases = [
         'org'                   => 'organization',
         'updateOrg'             => 'updateOrganization',
         'listOrganizations'     => 'organizations',
@@ -22,7 +22,7 @@ class Organizations extends Api
         'removeTeamRepo'        => 'removeTeamRepository',
         'removeOrgMember'       => 'removeOrganizationMember',
         'unpublicizeMembership' => 'unpublicizeMembership',
-    );
+    ];
     
     /**
      * Get an organization.
@@ -54,9 +54,9 @@ class Organizations extends Api
      */
     public function updateOrganization($org, $values, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'organization' => $values,
-        ));
+        ]);
         
         return $this->request()->patch('orgs/' . $org, $options);
     }
@@ -274,9 +274,9 @@ class Organizations extends Api
      */
     public function addTeamMember($team_id, $user, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'name' => $user,
-        ));
+        ]);
         
         return $this->request()->booleanFromResponse('put', 'teams/' . $team_id . '/members/' . $user, $options);
     }
@@ -353,9 +353,9 @@ class Organizations extends Api
      */
     public function addTeamRepository($team_id, $repo, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'name' => $repo,
-        ));
+        ]);
         
         return $this->request()->booleanFromResponse('put', 'teams/' . $team_id . '/repos/' . $repo, $options);
     }

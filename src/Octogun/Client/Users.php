@@ -80,13 +80,13 @@ class Users extends Api
             $app_secret = $this->configuration()->get('client_secret');
         }
         
-        $options = array_merge(array(
+        $options = array_merge([
             'endpoint'      => $this->configuration()->get('web_endpoint'),
             'code'          => $code,
             'client_id'     => $app_id,
             'client_secret' => $app_secret,
             'accept'        => 'application/json',
-        ), $options);
+        ], $options);
         
         return $this->request()->post('login/oauth/access_token', $options);
     }
@@ -355,10 +355,10 @@ class Users extends Api
      */
     public function addKey($title, $key, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'title' => $title,
             'key'   => $key,
-        ), $options);
+        ], $options);
         
         return $this->request()->post('user/keys', $options);
     }
@@ -425,9 +425,9 @@ class Users extends Api
      */
     public function addEmail($email, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'email' => $email,
-        ), $options);
+        ], $options);
         
         return $this->request()->post('user/emails', $options);
     }
@@ -446,9 +446,9 @@ class Users extends Api
      */
     public function removeEmail($email, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'email' => $email,
-        ), $options);
+        ], $options);
         
         return $this->request()->booleanFromResponse('delete', 'user/emails', $options);
     }

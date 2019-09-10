@@ -6,7 +6,7 @@ use Octogun\Api;
 
 class Refs extends Api
 {
-    public $aliases = array(
+    public $aliases = [
         'listRefs'        => 'refs',
         'references'      => 'refs',
         'listReferences'  => 'refs',
@@ -14,7 +14,7 @@ class Refs extends Api
         'createReference' => 'createRef',
         'updateReference' => 'updateRef',
         'deleteReference' => 'deleteRef',
-    );
+    ];
     
     /**
      * List all refs for a given user and repo.
@@ -62,10 +62,10 @@ class Refs extends Api
      */
     public function createRef($repo, $ref, $sha, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'ref' => 'refs/' . $ref,
             'sha' => $sha,
-        ), $options);
+        ], $options);
         
         return $this->request()->post('repos/' . $repo . '/git/refs', $options);
     }
@@ -85,10 +85,10 @@ class Refs extends Api
      */
     public function updateRef($repo, $ref, $sha, $force = true, array $options = [])
     {
-        $options = array_merge(array(
+        $options = array_merge([
             'sha'   => $sha,
             'force' => $force,
-        ), $options);
+        ], $options);
         
         return $this->request()->patch('repos/' . $repo . '/git/refs', $options);
     }
