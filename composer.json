@@ -21,7 +21,7 @@
   },
   "autoload": {
     "psr-0": {
-      "Octogun": "lib/",
+      "Octogun": "src/",
       "Octogun\\Test": "test/"
     }
   }
